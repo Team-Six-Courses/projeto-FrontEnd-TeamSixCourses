@@ -6,14 +6,14 @@ import { DiscussionPage } from '../pages/DiscussionPage';
 import { LoginPage } from '../pages/LoginPage';
 import { NotFoundPage } from '../pages/NotFound404Page';
 import { ProfilePage } from '../pages/ProfilePage';
-import { RegisterPage } from '../pages/RegisterPage';
+import { RegisterPage } from '../pages/Register/RegisterPage';
 
 export const routes = () => {
   return (
     <Routes>
+      <Route path='/cadastro' element={<RegisterPage />} /> 
       <Route path='/' element={<App />} >
         <Route index element={<LoginPage />} />
-        <Route path='/cadastro' element={<RegisterPage />} />  
       </Route>
       <Route path='/home'>
         <Route index element={<DashboardPage />} />
