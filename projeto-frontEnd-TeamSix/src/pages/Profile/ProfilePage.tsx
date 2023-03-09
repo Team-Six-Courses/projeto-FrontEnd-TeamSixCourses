@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { ProfileContext } from '../Providers/ProfileContext/ProfileContext';
+import { ProfileContext } from '../../Providers/ProfileContext/ProfileContext';
 
 export const ProfilePage = () => {
-  const { user } = useContext(ProfileContext)
+  const { user, activities } = useContext(ProfileContext)
 
-/*   console.log(user) */
+  console.log(activities)
 
   return (
     <>
