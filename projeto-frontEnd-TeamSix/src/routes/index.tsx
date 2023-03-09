@@ -16,7 +16,7 @@ export const RoutesPages = () => {
       <Route path="/cadastro" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
-      <Route path='/home' element={<DashboardPage />} />
+      <Route path="/home" element={<DashboardPage />} />
       <Route
         path="/perfil"
         element={

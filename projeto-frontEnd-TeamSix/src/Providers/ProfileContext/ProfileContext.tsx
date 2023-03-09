@@ -68,7 +68,7 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
       const commentsPost = responseComments.data.filter(
         (comment) => comment.userId === id
       );
-      
+
       const postFilterLike = likePosts.map((like) =>
         responsePost.data.filter((post) => post.id === like.postId)
       );
@@ -78,9 +78,9 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
 
       setActivities(posts);
       postFilterLike.map((post) => setActivities([...activities, ...post]));
-      postFilterCommentPost.map((post) =>
+     /*  postFilterCommentPost.map((post) =>
         setActivities([...activities, ...post])
-      );
+      ); */
     } catch (error) {
       console.error(error);
     }
