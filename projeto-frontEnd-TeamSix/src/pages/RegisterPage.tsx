@@ -1,5 +1,6 @@
 import React from 'react';
 
 export const RegisterPage = () => {
-  return <div></div>;
+  console.log('Register')
+  return <div>Resgister</div>;
 };

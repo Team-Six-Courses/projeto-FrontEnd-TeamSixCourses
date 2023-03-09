@@ -1,5 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ProfileContext } from '../Providers/ProfileContext/ProfileContext';
 
 export const ProfilePage = () => {
-  return <div></div>;
+  const { user } = useContext(ProfileContext)
+
+/*   console.log(user) */
+
+  return (
+    <>
+    <header>Profile</header>
+    <main>
+      <section className='accontActivities'></section>
+      <section className='informations'></section>
+    </main>
+    </>
+  );
 };

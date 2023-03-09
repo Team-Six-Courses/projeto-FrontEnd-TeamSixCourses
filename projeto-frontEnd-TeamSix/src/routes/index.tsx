@@ -7,19 +7,26 @@ import { LoginPage } from '../pages/LoginPage';
 import { NotFoundPage } from '../pages/NotFound404Page';
 import { ProfilePage } from '../pages/ProfilePage';
 import { RegisterPage } from '../pages/RegisterPage';
+import { ProfileProvider } from '../Providers/ProfileContext/ProfileContext';
 
-export const routes = () => {
+export const RoutesPages = () => {
   return (
     <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<LoginPage />} />
-        <Route path="/cadastro" element={<RegisterPage />} />
-      </Route>
-      <Route path="/home">
-        <Route index element={<DashboardPage />} />
-        <Route path="/perfil" element={<ProfilePage />} />
-        <Route path="/discussão" element={<DiscussionPage />} />
-      </Route>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/cadastro" element={<RegisterPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/cadastro" element={<RegisterPage />} />
+      <Route path='/home' element={<DashboardPage />} />
+      <Route
+        path="/perfil"
+        element={
+          <ProfileProvider>
+            <ProfilePage />
+          </ProfileProvider>
+        }
+      />
+      <Route path="/discussao" element={<DiscussionPage />} />
+
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
