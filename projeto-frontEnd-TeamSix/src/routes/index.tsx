@@ -11,16 +11,16 @@ import { RegisterPage } from '../pages/Register/RegisterPage';
 export const routes = () => {
   return (
     <Routes>
-      <Route path='/cadastro' element={<RegisterPage />} /> 
-      <Route path='/' element={<App />} >
+      <Route path="/" element={<App />}>
         <Route index element={<LoginPage />} />
+        <Route path="/cadastro" element={<RegisterPage />} />
       </Route>
-      <Route path='/home'>
+      <Route path="/home">
         <Route index element={<DashboardPage />} />
-        <Route path='/perfil' element={<ProfilePage />} />
-        <Route path='/discussão' element={<DiscussionPage />} />
+        <Route path="/perfil" element={<ProfilePage />} />
+        <Route path="/discussão" element={<DiscussionPage />} />
       </Route>
-      <Route path='*' element={<NotFoundPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
