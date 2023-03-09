@@ -1,5 +1,6 @@
 import React from 'react';
 
 export const DiscussionPage = () => {
-  return <div></div>;
+  console.log('Discussion')
+  return <div>Discussion</div>;
 };

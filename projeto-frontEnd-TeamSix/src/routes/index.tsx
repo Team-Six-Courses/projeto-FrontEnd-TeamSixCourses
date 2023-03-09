@@ -8,12 +8,12 @@ import { NotFoundPage } from '../pages/NotFound404Page';
 import { ProfilePage } from '../pages/ProfilePage';
 import { RegisterPage } from '../pages/Register/RegisterPage';
 
-export const routes = () => {
+export const RoutesPages = () => {
   return (
     <Routes>
-      <Route path='/cadastro' element={<RegisterPage />} /> 
       <Route path='/' element={<App />} >
         <Route index element={<LoginPage />} />
+        <Route path='/cadastro' element={<RegisterPage />} />  
       </Route>
       <Route path='/home'>
         <Route index element={<DashboardPage />} />

@@ -1,5 +1,12 @@
-import React from "react";
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { RoutesPages } from './routes';
 
-export function App() {
-  return <div className="App"></div>;
-}
+export const App = () => {
+  return (
+    <div className="App">
+    <RoutesPages/>
+      {/* <Navigate to="/login" /> */}
+    </div>
+  );
+};

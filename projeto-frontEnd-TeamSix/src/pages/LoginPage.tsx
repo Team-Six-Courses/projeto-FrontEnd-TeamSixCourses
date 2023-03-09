@@ -1,5 +1,6 @@
 import React from 'react';
 
 export const LoginPage = () => {
-  return <div></div>;
+  console.log('Login')
+  return <div>Login</div>;
 };
