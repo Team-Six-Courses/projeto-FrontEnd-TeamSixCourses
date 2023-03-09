@@ -11,9 +11,9 @@ import { RegisterPage } from '../pages/Register/RegisterPage';
 export const RoutesPages = () => {
   return (
     <Routes>
-      <Route path='/' element={<App />} >
+      <Route path="/" element={<App />}>
         <Route index element={<LoginPage />} />
-        <Route path='/cadastro' element={<RegisterPage />} />  
+        <Route path="/cadastro" element={<RegisterPage />} />
       </Route>
       <Route path='/home'>
         <Route index element={<DashboardPage />} />
