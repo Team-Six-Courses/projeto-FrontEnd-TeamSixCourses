@@ -4,6 +4,7 @@ export interface IProfileProps {
 
 export interface IProfileProvider {
   user: IUser;
+  activities: IPosts[]
 }
  
 export interface IPosts {
@@ -12,7 +13,7 @@ export interface IPosts {
   userId: number;
 }
 
-interface ILikePost {
+export interface ILikePost {
   userId: number;
   postId: number;
   id: number;
@@ -21,6 +22,13 @@ interface ILikePost {
 interface ILikeCommet {
   userId: number;
   commnetId: number;
+  id: number
+}
+
+export interface IComments {
+  postId: number;
+  comment: SVGStringList;
+  userId: number;
   id: number
 }
 
@@ -33,4 +41,12 @@ export interface IUser {
   posts: IPosts;
   likePost: ILikePost;
   likeComment: ILikeCommet;
+}
+
+export interface IPosts {
+  title: string;
+  description: string;
+  userId: number;
+  filmId: number;
+  id: number;
 }
