@@ -6,7 +6,7 @@ import { DiscussionPage } from '../pages/DiscussionPage';
 import { LoginPage } from '../pages/LoginPage';
 import { NotFoundPage } from '../pages/NotFound404Page';
 import { ProfilePage } from '../pages/Profile/ProfilePage';
-import { RegisterPage } from '../pages/RegisterPage';
+import { RegisterPage } from '../pages/Register/RegisterPage';
 import { ProfileProvider } from '../Providers/ProfileContext/ProfileContext';
 
 export const RoutesPages = () => {
@@ -15,7 +15,6 @@ export const RoutesPages = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/cadastro" element={<RegisterPage />} />
       <Route path="/home" element={<DashboardPage />} />
       <Route
         path="/perfil"
