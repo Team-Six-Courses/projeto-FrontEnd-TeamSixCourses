@@ -6,7 +6,7 @@ import { DiscussionPage } from '../pages/DiscussionPage';
 import { LoginPage } from '../pages/LoginPage';
 import { NotFoundPage } from '../pages/NotFound404Page';
 import { ProfilePage } from '../pages/ProfilePage';
-import { RegisterPage } from '../pages/RegisterPage';
+import { RegisterPage } from '../pages/Register/RegisterPage';
 
 export const routes = () => {
   return (
