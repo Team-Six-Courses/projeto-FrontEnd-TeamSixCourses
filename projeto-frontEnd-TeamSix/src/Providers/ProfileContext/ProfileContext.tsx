@@ -20,7 +20,7 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
   const [activities, setActivities] = useState<IPosts[]>([] as IPosts[]);
 
   const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmljaXVzQG1haWwuY29tIiwiaWF0IjoxNjc4MzgxOTEyLCJleHAiOjE2NzgzODU1MTIsInN1YiI6IjEifQ.n15EHWaiKexp4oGJNCN3qU6nyNGY953WzuHV4O6Y-b4'; // localStorage.getItem('@TOKEN');
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmljaXVzQG1haWwuY29tIiwiaWF0IjoxNjc4NDAxMjg4LCJleHAiOjE2Nzg0MDQ4ODgsInN1YiI6IjEifQ.V6oPf3dsGlsnepkd0taWoEN_2I8hcq6v1QOHiGLjy58'; // localStorage.getItem('@TOKEN');
   const id = 1; // localStorage.getItem("@ID")
 
   const getUser = async () => {
@@ -78,7 +78,7 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
 
       setActivities(posts);
       postFilterLike.map((post) => setActivities([...activities, ...post]));
-     /*  postFilterCommentPost.map((post) =>
+      /*  postFilterCommentPost.map((post) =>
         setActivities([...activities, ...post])
       ); */
     } catch (error) {
@@ -90,7 +90,7 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
   }, []);
 
   return (
-    <ProfileContext.Provider value={{ user, activities }}>
+    <ProfileContext.Provider value={{ user, activities, token }}>
       {children}
     </ProfileContext.Provider>
   );
