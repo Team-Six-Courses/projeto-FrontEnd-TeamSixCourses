@@ -9,13 +9,13 @@ import { ProfilePage } from '../pages/Profile/ProfilePage';
 import { RegisterPage } from '../pages/Register/RegisterPage';
 import { ProfileProvider } from '../Providers/ProfileContext/ProfileContext';
 
+
 export const RoutesPages = () => {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/home" element={<DashboardPage />} />
+      <Route path='/home' element={<DashboardPage />} />
       <Route
         path="/perfil"
         element={
