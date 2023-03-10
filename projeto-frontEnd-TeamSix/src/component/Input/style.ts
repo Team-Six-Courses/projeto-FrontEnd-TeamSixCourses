@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import styled from 'styled-components';
 
 export const StyledFieldSet = styled.fieldset`
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background: rgba(245, 245, 245, 0.85);
