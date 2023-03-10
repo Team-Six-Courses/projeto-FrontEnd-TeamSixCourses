@@ -1,12 +1,13 @@
 export interface IProfileProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export interface IProfileProvider {
   user: IUser;
-  activities: IPosts[]
+  activities: IPosts[];
+  token: string;
 }
- 
+
 export interface IPosts {
   title: string;
   description: string;
@@ -22,14 +23,14 @@ export interface ILikePost {
 interface ILikeCommet {
   userId: number;
   commnetId: number;
-  id: number
+  id: number;
 }
 
 export interface IComments {
   postId: number;
   comment: SVGStringList;
   userId: number;
-  id: number
+  id: number;
 }
 
 export interface IUser {
@@ -38,9 +39,9 @@ export interface IUser {
   avatar: string | null;
   name: string;
   id: number;
-  posts: IPosts;
-  likePost: ILikePost;
-  likeComment: ILikeCommet;
+  posts: IPosts[];
+  likePost: ILikePost[];
+  likeComment: ILikeCommet[];
 }
 
 export interface IPosts {
