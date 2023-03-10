@@ -3,9 +3,9 @@ export interface IProfileProps {
 }
 
 export interface IProfileProvider {
-  user: IUser;
+  user: IUser | null;
   activities: IPosts[];
-  token: string;
+  userForId: IUser[];
 }
 
 export interface IPosts {
@@ -36,7 +36,7 @@ export interface IComments {
 export interface IUser {
   email: string;
   password: string;
-  avatar: string | null;
+  avatar: string;
   name: string;
   id: number;
   posts: IPosts[];
