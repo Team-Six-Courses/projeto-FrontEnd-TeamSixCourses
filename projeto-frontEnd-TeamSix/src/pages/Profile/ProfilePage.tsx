@@ -19,7 +19,6 @@ export const ProfilePage = () => {
                 <h2>Atividades da conta</h2>
               </div>
               {activities.map((post, index) => {
-                /* console.log(userForId); */
                 return (
                   <Card
                     key={post.id}

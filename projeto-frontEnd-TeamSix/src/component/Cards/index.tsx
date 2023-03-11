@@ -7,7 +7,7 @@ export const Card = ({ title, descrition, img }: ICard) => {
   return (
     <StyledLi>
       <StyledHeaderPost>
-        <StyledImg $src="https://www.themoviedb.org/t/p/w533_and_h300_bestv2/3dPhs7hUnQLphDFzdkD407VZDYo.jpg" />
+        <StyledImg $src={img} />
         <h3>{title}</h3>
       </StyledHeaderPost>
       <p>{descrition}</p>

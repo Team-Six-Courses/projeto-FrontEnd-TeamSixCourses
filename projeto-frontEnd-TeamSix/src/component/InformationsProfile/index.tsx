@@ -5,6 +5,7 @@ import { StyledUser, StyledUserInformations, StyleInformations } from './style';
 
 export const InformationProfile = () => {
   const { user } = useContext(ProfileContext);
+  console.log(user?.avatar);
 
   return (
     <StyleInformations>
@@ -12,7 +13,7 @@ export const InformationProfile = () => {
         <h2>Informações</h2>
       </div>
       <StyledUser>
-        <StyledImg $src="https://www.themoviedb.org/t/p/w533_and_h300_bestv2/3dPhs7hUnQLphDFzdkD407VZDYo.jpg" />
+        <StyledImg $src={user?.avatar} />
         <div className="userInformations">
           <h4>{user?.name.toLocaleUpperCase()}</h4>
           <p>{user?.email}</p>

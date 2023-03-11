@@ -32,6 +32,12 @@ export const StyleInformations = styled.section`
       margin-left: 8%;
     }
   }
+
+  @media (max-width: 769px) {
+    width: 85%;
+
+    margin: 30% 0 25px 3%;
+  }
 `;
 
 export const StyledUser = styled.div`
@@ -43,7 +49,7 @@ export const StyledUser = styled.div`
   width: 76px;
 
   margin-left: 3%;
-  margin-top: 3%;
+  margin-top: 5%;
 
   .userInformations {
     display: flex;
@@ -75,7 +81,7 @@ export const StyledUserInformations = styled.div`
   width: 90%;
 
   margin: 0 auto;
-  margin-top: 3%;
+  margin-top: 5%;
 
   display: flex;
   flex-direction: column;
@@ -90,5 +96,9 @@ export const StyledUserInformations = styled.div`
     color: #f5f5f5;
 
     margin-left: 3%;
+  }
+
+  @media (max-width: 769px) {
+    margin-bottom: 30px;
   }
 `;

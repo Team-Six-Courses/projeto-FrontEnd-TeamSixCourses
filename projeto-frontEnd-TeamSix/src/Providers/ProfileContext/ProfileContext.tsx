@@ -21,7 +21,7 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
   const [userForId, setUserForId] = useState<IUser[]>([] as IUser[]);
 
   const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmljaXVzQG1haWwuY29tIiwiaWF0IjoxNjc4NDgxMDA2LCJleHAiOjE2Nzg0ODQ2MDYsInN1YiI6IjEifQ.6EYRAHRO-NhZzxa8ENdSlhB0yG8EGuOjamgDS-nZQug'; // localStorage.getItem('@TOKEN');
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmljaXVzQG1haWwuY29tIiwiaWF0IjoxNjc4NTU5NTI4LCJleHAiOjE2Nzg1NjMxMjgsInN1YiI6IjEifQ.ivCNkIzr_EeiCbh5EhvRLZlsa9_jl_0pj1B7zC5Gocg'; // localStorage.getItem('@TOKEN');
   const id = 1; // localStorage.getItem("@ID")
 
   const getUser = async () => {
@@ -91,7 +91,6 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
   }, []);
 
   const getUserForId = async (id: number) => {
-    console.log(id);
     try {
       const response = await api.get<IUser>(`/users/${id}`, {
         headers: {
@@ -104,12 +103,15 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
     }
   };
 
-  useEffect(() => {
-    activities.map((post) => {
+  const addUserForId = () => {
+    return activities.map((post) => {
       getUserForId(post.userId);
     });
-  }, []);
+  };
 
+  useEffect(() => {
+    addUserForId();
+  }, []);
   return (
     <ProfileContext.Provider value={{ user, activities, userForId }}>
       {children}
