@@ -43,7 +43,7 @@ export const StyledUser = styled.div`
   width: 76px;
 
   margin-left: 3%;
-  margin-top: 3%;
+  margin-top: 5%;
 
   .userInformations {
     display: flex;
@@ -75,7 +75,7 @@ export const StyledUserInformations = styled.div`
   width: 90%;
 
   margin: 0 auto;
-  margin-top: 3%;
+  margin-top: 5%;
 
   display: flex;
   flex-direction: column;

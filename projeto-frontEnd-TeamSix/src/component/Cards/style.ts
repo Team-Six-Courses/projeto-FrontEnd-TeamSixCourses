@@ -46,10 +46,21 @@ export const StyledLi = styled.li`
 
     text-decoration: none;
 
-    font-size: 20px;
+    font-size: 1.25rem;
     font-style: italic;
 
     color: #f5f5f5;
+  }
+
+  @media (max-width: 769px) {
+    min-height: 220px;
+    width: 90%;
+    p {
+      font-size: 1rem;
+    }
+    a {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -65,8 +76,15 @@ export const StyledHeaderPost = styled.div`
   h3 {
     font-size: 1.75rem;
     font-family: 'Inter', sans-serif;
+    font-weight: bold;
 
     color: #f5f5f5;
+  }
+
+  @media (max-width: 769px) {
+    h3 {
+      font-size: 22px;
+    }
   }
 `;
 
@@ -81,6 +99,11 @@ const StyledImgCSS = css<IStyledUrl>`
       background-size: 130px;
     `;
   }}
+
+  @media (max-width: 769px) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 export const StyledImg = styled.div<IStyledUrl>`
