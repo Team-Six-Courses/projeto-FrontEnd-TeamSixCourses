@@ -3,6 +3,11 @@ import styled from 'styled-components';
 export const StyleBackgroundImage = styled.div`
   background: url('https://www.themoviedb.org/t/p/original/Ab9eQH5O3VCTQjJsQghxjYOkfMp.jpg')
     no-repeat;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 `;
 
 export const StyledMain = styled.main`
@@ -25,6 +30,8 @@ export const StyledMain = styled.main`
     justify-content: center;
     align-items: center;
 
+    height: 100%;
+
     .accontActivities {
       width: 85%;
     }
@@ -42,6 +49,8 @@ export const StyledUl = styled.ul`
   align-items: center;
 
   overflow-y: scroll;
+
+  border-radius: 5px;
 
   .title {
     background-color: rgba(26, 26, 26, 0.7);

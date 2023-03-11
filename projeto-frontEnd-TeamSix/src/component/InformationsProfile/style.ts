@@ -32,6 +32,12 @@ export const StyleInformations = styled.section`
       margin-left: 8%;
     }
   }
+
+  @media (max-width: 769px) {
+    width: 85%;
+
+    margin: 30% 0 25px 3%;
+  }
 `;
 
 export const StyledUser = styled.div`
@@ -90,5 +96,9 @@ export const StyledUserInformations = styled.div`
     color: #f5f5f5;
 
     margin-left: 3%;
+  }
+
+  @media (max-width: 769px) {
+    margin-bottom: 30px;
   }
 `;

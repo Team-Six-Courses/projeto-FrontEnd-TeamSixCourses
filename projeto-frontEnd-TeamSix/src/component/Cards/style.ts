@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 interface IStyledUrl {
-  $src: string;
+  $src: string | undefined;
 }
 
 export const StyledLi = styled.li`
@@ -95,7 +95,7 @@ const StyledImgCSS = css<IStyledUrl>`
   border-radius: 50px;
   ${({ $src }) => {
     return css`
-      background: url(${$src}) center no-repeat;
+      background: url(${$src}) center;
       background-size: 130px;
     `;
   }}
