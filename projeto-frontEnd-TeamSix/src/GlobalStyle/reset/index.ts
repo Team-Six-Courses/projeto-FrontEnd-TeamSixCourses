@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const StyledReset = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -53,4 +53,4 @@ table {
 button {
 	cursor: pointer;
 }
-`
+`;
