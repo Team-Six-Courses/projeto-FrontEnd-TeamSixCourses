@@ -4,7 +4,7 @@ import img from '../../assets/BGRegister.svg';
 export const StyledMainRegister = styled.main`
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   align-items: center;
   justify-content: center;
   background: url(${img});
@@ -13,6 +13,9 @@ export const StyledMainRegister = styled.main`
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  flex-direction: column;
+  gap: 50px;
+ 
 `;
 
 export const StyledFormRegister = styled.form`
