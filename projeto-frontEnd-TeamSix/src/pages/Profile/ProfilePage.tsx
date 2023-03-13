@@ -1,7 +1,6 @@
-import { height } from '@mui/system';
 import React, { useContext } from 'react';
 import { Card } from '../../component/Cards';
-import { Header } from '../../component/Header';
+import  Header  from '../../component/Header';
 import { InformationProfile } from '../../component/InformationsProfile';
 import { ProfileContext } from '../../Providers/ProfileContext/ProfileContext';
 import { StyleBackgroundImage, StyledMain, StyledUl } from './styled';

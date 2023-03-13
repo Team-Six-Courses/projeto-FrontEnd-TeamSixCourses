@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyledButton } from './style';
 
-interface IButtonDefaultProps{
-    type: 'submit';
-    name: string;
+interface IButtonDefaultProps {
+  type?: 'button' | 'submit' | 'reset' | undefined
+  name: string;
 }
 
 export const Button = ({ type, name }: IButtonDefaultProps) => {

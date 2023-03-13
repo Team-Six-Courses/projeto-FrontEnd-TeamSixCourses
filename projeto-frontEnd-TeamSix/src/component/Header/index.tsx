@@ -1,21 +1,36 @@
-import React from 'react'
-import { StyledButtonProfile, StyledDivImg, StyledDivProfile, StyledHeader } from './style'
-import {AiOutlineDown} from 'react-icons/ai'
+import React, { useState } from 'react'
+import { IHeaderProps, StyledHeader } from './style'
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
+const Header = ({background}: IHeaderProps ) => {
+    const [modalProfile, setModalProfile] = useState(false)
+    const navigate = useNavigate()
 
-interface IHeaderProps{
-  background: string
+    return (
+        <StyledHeader background={background}>
+            <div>
+                <h1>TEAM SIX</h1>
+                <small>Films</small>
+            </div>
+            <div onClick={() => setModalProfile(!modalProfile)}>
+                <figure>
+                    <img src="AVATAR" alt="AVATARPROFILE" />
+                </figure>
+                {modalProfile ? <MdOutlineKeyboardArrowDown /> : (
+                    <>
+                        <MdOutlineKeyboardArrowUp />
+                        <div className='modalProfile'>
+                            <p onClick={() => { navigate('/perfil') }}>Perfil</p>
+                            <p onClick={() => { }}>Avatar</p>
+                            <p onClick={() => { localStorage.removeItem("@TOKEN"); navigate('/') }}>Sair</p>
+                        </div>
+                    </>
+                )}
+            </div>
+        </StyledHeader>
+    )
 }
-export const Header = ({background}:IHeaderProps) => {
-  const token = localStorage.getItem('@TOKEN')
-  return (
-    <StyledHeader background={background}>
-        <h1>Team Six Films</h1>
-        {token?<StyledDivProfile>
-          <StyledDivImg></StyledDivImg>
-         <StyledButtonProfile><AiOutlineDown/></StyledButtonProfile>
-        </StyledDivProfile>: null}
-        
-    </StyledHeader>
-  )
-}
+
+export default Header
