@@ -11,7 +11,10 @@ export const ProtectRoute = () => {
         navigate("/")
       }
     },[])
+
+
+    return token ? <Outlet/>:navigate("/")
+
     
-    return token ? <Outlet/>:null
 }
 

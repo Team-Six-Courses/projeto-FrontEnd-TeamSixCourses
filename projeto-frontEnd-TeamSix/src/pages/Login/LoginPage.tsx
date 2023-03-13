@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { StyledFormLogin, StyledMainLogin } from './style';
 import { SchemaLogin } from './schema';
 import { Button } from '../../component/Button';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { UserContext } from '../../Providers/userContext/userContext';
 
 interface Iform {
@@ -20,6 +20,9 @@ interface Iform {
 export const LoginPage = () => {
   const { loading, loginUser } = useContext(UserContext)
 
+  const token = localStorage.getItem("@TOKEN")
+
+
   const { register, handleSubmit, formState: { errors }
   } = useForm<Iform>({
     mode: 'onChange',
@@ -28,6 +31,10 @@ export const LoginPage = () => {
 
   const submit: SubmitHandler<Iform> = (form) => {
     loginUser(form)
+  }
+
+  if (token){
+   return <Navigate to="/home"/> 
   }
 
   return (
