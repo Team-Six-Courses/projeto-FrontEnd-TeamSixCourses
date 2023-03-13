@@ -90,6 +90,7 @@ export const DashboardPage = () => {
               {posts.map((post) => {
                 return (
                   <Card
+                    key={post.id}
                     title={post.title}
                     descrition={post.description}
                     img={'null'}
