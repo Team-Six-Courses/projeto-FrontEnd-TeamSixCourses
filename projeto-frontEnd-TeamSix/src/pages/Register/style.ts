@@ -4,7 +4,7 @@ import img from '../../assets/BGRegister.svg';
 export const StyledMainRegister = styled.main`
   display: flex;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   background: url(${img});
