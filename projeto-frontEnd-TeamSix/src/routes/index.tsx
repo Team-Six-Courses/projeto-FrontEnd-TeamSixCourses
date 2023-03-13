@@ -12,7 +12,7 @@ import { ProfileProvider } from '../Providers/ProfileContext/ProfileContext';
 export const RoutesPages = () => {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
       <Route path="/home" element={<DashboardPage />} />
       <Route

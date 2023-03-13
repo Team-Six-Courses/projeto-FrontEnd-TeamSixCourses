@@ -39,7 +39,7 @@ export const RegisterPage = () => {
         <Input type='password' label='senha' placeholder='Digite sua senha' register={register('password')} error={errors.password} />
         <Input type='password' label='confirme Senha' placeholder='Confirme a senha' register={register('confirmPassword')} error={errors.confirmPassword} />
         <button type='submit' >Cadastrar</button>
-        <small> Já possui uma conta? <Link to='/login'>entre aqui</Link> </small>
+        <small> Já possui uma conta? <Link to='/'>entre aqui</Link> </small>
       </StyledFormRegister>
     </StyledMainRegister>
   )
