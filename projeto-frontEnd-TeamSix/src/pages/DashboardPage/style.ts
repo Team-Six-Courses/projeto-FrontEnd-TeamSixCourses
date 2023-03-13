@@ -6,20 +6,19 @@ import user from '../../assets/userImg.svg';
 import cover from '../../assets/Cover.svg';
 
 export const DashStyle = styled.div`
-  max-width: 1440px;
   width: 100%;
   height: max-content;
+  margin-top: 100px;
 
-  .section-one {
-    max-width: 1440px;
+  section {
     width: 100%;
     height: 688px;
     margin: 0px;
-
     background-image: url(${bgDash});
     background-repeat: no-repeat;
-    background-position: right top;
+    background-position: center;
     background-attachment: fixed;
+    background-size: cover;
   }
   .filter_bg {
     width: 100%;
@@ -134,7 +133,6 @@ export const DashStyle = styled.div`
   }
 
   .call_film {
-    max-width: 1440px;
     width: 100%;
     height: 260px;
     display: flex;
@@ -156,14 +154,14 @@ export const DashStyle = styled.div`
     color: black;
   }
   main {
-    max-width: 1440px;
     width: 100%;
     height: 800px;
 
     background-image: url(${bgDash2});
     background-repeat: no-repeat;
-    background-position: right top;
+    background-position: center;
     background-attachment: fixed;
+    background-size: cover;
   }
   .filter_bgmain {
     width: 100%;
@@ -183,7 +181,7 @@ export const DashStyle = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: start;
     gap: 70px;
 
@@ -244,31 +242,7 @@ export const FormStyled = styled.form`
   }
 `;
 export const ListStyled = styled.ul`
-  width: 750px;
-  height: max-content;
-  padding: 20px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  gap: 15px;
-
-  border-radius: 8px;
-
-  background: rgba(0, 0, 0, 0.6);
-
-  overflow-y: scroll;
-  ::-webkit-scrollbar {
-    background-color: none;
-    color: none;
-
-    list-style: none;
-  }
   li {
-    width: 400px;
-    min-height: 80px;
-
-    background-color: red;
+    width: 750px;
   }
 `;

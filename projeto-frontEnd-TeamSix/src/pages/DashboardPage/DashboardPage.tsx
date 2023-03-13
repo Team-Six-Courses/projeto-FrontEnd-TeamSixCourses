@@ -24,7 +24,7 @@ export const DashboardPage = () => {
 
   return (
     <DashStyle>
-      <Header />
+      <Header background="rgba(3,35,65,1)" />
       <section className="section-one">
         <div className="filter_bg">
           <div className="box_section_content">

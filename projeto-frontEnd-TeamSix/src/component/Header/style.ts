@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
-export const StyledHeader = styled.header`
+export interface IHeaderProps {
+  background: string;
+}
+
+export const StyledHeader = styled.header<IHeaderProps>`
   height: 100px;
   width: 100vw;
-  background: #032541;
+  background: ${(props) => props.background};
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
@@ -23,7 +27,7 @@ export const StyledHeader = styled.header`
       font-family: 'Inter';
       font-style: normal;
       font-weight: 700;
-      font-size: 34px;
+      font-size: 32px;
       line-height: 34px;
       color: #ffffff;
     }
@@ -32,7 +36,7 @@ export const StyledHeader = styled.header`
       font-family: 'Russo One';
       font-style: normal;
       font-weight: 700;
-      font-size: 26px;
+      font-size: 20px;
       line-height: 34px;
       color: #ff7d04;
     }

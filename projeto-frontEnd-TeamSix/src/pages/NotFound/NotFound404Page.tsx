@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../../component/Header';
 import {
   StyledBackgroundImg,
   StyledMain,
@@ -10,7 +11,7 @@ import {
 export const NotFoundPage = () => {
   return (
     <>
-      <header>NotFound 404 HEADER</header>
+      <Header background='rgba(65, 3, 3, 1)'/>
       <StyledBackgroundImg>
         <StyledMain>
           <StyledTitle>404 - Not Found</StyledTitle>

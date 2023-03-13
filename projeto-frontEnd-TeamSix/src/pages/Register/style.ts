@@ -11,8 +11,11 @@ export const StyledMainRegister = styled.main`
   background-repeat: no-repeat;
   background-origin: content-box;
   background-attachment: fixed;
-  background-position: top;
+  background-position: center;
   background-size: cover;
+  flex-direction: column;
+  gap: 50px;
+ 
 `;
 
 export const StyledFormRegister = styled.form`
@@ -24,6 +27,14 @@ export const StyledFormRegister = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
+
+  @media (max-width: 769px ) {
+    min-width: 360px;
+  }
+
+  @media (max-width: 420px ) {
+    min-width: 250px;
+  }
 
   h2 {
     font-family: 'Inter';
