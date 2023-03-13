@@ -57,8 +57,7 @@ export const UserProvider = ({ children }: IUserDefaultProps) => {
     const loginUser = async ( formData: ILoginUser) => {
         try {
             setLoading(true)
-            const response = await api.post('/login', formData)
-            console.log(response)            
+            const response = await api.post('/login', formData)           
             localStorage.setItem('@TOKEN', response.data.accessToken)
             localStorage.setItem('@USERID', response.data.user.id)
             toast.success('Login Realizado')
