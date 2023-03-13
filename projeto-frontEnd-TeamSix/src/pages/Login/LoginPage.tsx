@@ -18,7 +18,7 @@ interface Iform {
 }
 
 export const LoginPage = () => {
-  const { loading, loginUser} = useContext(UserContext)
+  const { loading, loginUser } = useContext(UserContext)
 
   const { register, handleSubmit, formState: { errors }
   } = useForm<Iform>({
