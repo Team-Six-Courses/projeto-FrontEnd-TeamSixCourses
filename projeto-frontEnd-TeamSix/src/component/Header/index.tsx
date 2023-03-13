@@ -18,15 +18,15 @@ const Header = () => {
                 <figure>
                     <img src="AVATAR" alt="AVATARPROFILE" />
                 </figure>
-                {modalProfile ? <MdOutlineKeyboardArrowDown /> : (
-                    <>
-                        <MdOutlineKeyboardArrowUp />
-                        <div className='modalProfile'>
-                            <p onClick={() => { navigate('/perfil') }}>Perfil</p>
-                            <p onClick={() => { }}>Avatar</p>
-                            <p onClick={() => { localStorage.removeItem("@TOKEN"); navigate('/') }}>Sair</p>
-                        </div>
-                    </>
+                {modalProfile ? <>
+                    <MdOutlineKeyboardArrowUp />
+                    <div className='modalProfile'>
+                        <p onClick={() => { navigate('/perfil') }}>Perfil</p>
+                        <p onClick={() => { }}>Avatar</p>
+                        <p onClick={() => { localStorage.removeItem("@TOKEN"); navigate('/') }}>Sair</p>
+                    </div>
+                </> : (
+                    <MdOutlineKeyboardArrowDown />
                 )}
             </div>
         </StyledHeader>
