@@ -1,9 +1,19 @@
-import { Input } from '../../component/Input';
+import { InputDash } from '../DashboardPage/InputDash';
+import { DashText } from '../DashboardPage/DashText';
 import { DashStyle, FormStyled, ListStyled } from './style';
-import bgDash from '../../assets/BGdash.svg';
+import { useForm } from 'react-hook-form';
 
-export const DashboardPage = () => {
+interface IDashForm{
+  title: string;
+  description: string;
+  userId: number ;
+}
+
+export const DashboardPage = ()  => {
   console.log('Dashboard')
+
+  const { register, handleSubmit, formState: { errors } } = useForm<IDashForm>();
+
 
   return (
            <DashStyle>
@@ -52,16 +62,28 @@ export const DashboardPage = () => {
             <main>
               <div className='filter_bgmain'>
                 <div className='box_main_content'>
-                  <FormStyled action="">
-                      <div> 
-                        <img src='../../assets/BGdash.svg' alt="" />
-                        <input type="text" />
+
+                  <FormStyled onSubmit={handleSubmit(()=>{})}>
+                      <div className='user_title'> 
+                        <img src='../../assets/userImg.svg'/>
+                        <InputDash
+                         placeholder='O que você está pensando?'
+                         type='text'
+                         register={register('title')}
+                         error={errors.title}
+                          />
                       </div>
+                        <DashText placeholder='O que você está pensando?' register={register('description')}/>
+                        <div className='box_button'>
+                          <button type='submit'>Enviar</button>
+                        </div>
 
                   </FormStyled>
+
                   <ListStyled>
-                      
+                 
                   </ListStyled>
+                  
                 </div>
               </div>
             </main>

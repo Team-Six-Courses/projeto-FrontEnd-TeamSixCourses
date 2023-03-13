@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import bgDash from '../../assets/BGdash.svg';
 import bgDash2 from '../../assets/BGdash2.svg';
+import user from '../../assets/userImg.svg';
 
 import cover from '../../assets/Cover.svg';
 
@@ -148,7 +149,7 @@ export const DashStyle = styled.div`
         align-items: center;
 
         background: rgba(186,240,255,0.6808298319327731);
-        background: linear-gradient(180deg, rgba(186,240,255,0.6808298319327731) 0%, rgba(173,190,194,5) 59%, rgba(0,0,0,0.689233193277311) 100%);
+        background: linear-gradient(180deg, rgba(186,240,255,0.6808298319327731) 0%, rgba(173,190,194,5) 59%, rgba(0,0,0,1.889233193277311) 100%);
     }
     
     h1 {
@@ -190,27 +191,89 @@ export const DashStyle = styled.div`
         gap: 70px;
 
         border: none;
-        background: rgba(21, 81, 31, 0.6);
     }
 
 `
 
+
 export const FormStyled = styled.form`
-        width: 700px;
+        width: 750px;
         height: 360px;
+        padding: 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        gap: 15px;
+        
+        border-radius: 8px;
 
         background: rgba(0, 0, 0, 0.6);
 
-        img{
-            width: 80px;
-            height: 80px;
+        .user_title{
+            width: 100%;
 
-            border-radius: 50%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+        }
+        img{
+            width: 85px;
+            height: 85px;
+
+            background-image: url(${user});
+            background-repeat: no-repeat;
+
+            border: none;
+        }
+        input{
+            background: rgba(73, 73, 73, 0.6);
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            
+            border: none;
+            border-radius: 8px;
+            
+            color: #ffff;
+            background: rgba(0, 0, 0, 0.2);
+
+            box-shadow: 0px 0px 5px #ff7d04;
+        }
+        button:hover{
+            box-shadow: 0px 0px 25px #01b4e4;
+            outline: none;
         }
 `
 export const ListStyled = styled.ul`
-        width: 700px;
-        height: 860px;
+        width: 750px;
+        height: max-content;
+        padding: 20px;
 
-        background: rgba(110, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 15px;
+        
+        border-radius: 8px;
+
+        background: rgba(0, 0, 0, 0.6);
+
+        overflow-y: scroll;
+        ::-webkit-scrollbar{
+            background-color: none;
+            color: none;
+
+            list-style: none;
+        }
+        li{
+            width: 400px;
+            min-height: 80px;
+
+            background-color: red;
+        }
 `
