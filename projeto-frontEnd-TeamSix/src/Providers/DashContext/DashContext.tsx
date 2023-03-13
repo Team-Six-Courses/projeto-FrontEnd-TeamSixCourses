@@ -3,9 +3,9 @@ import { api } from '../../API';
 import { IComments, IPosts } from '../../types/type';
 import { IDashPosts, IDashProvider, IDashProviderProps, IFilm } from './type';
 
-const DashContext = createContext<IDashProvider | null>(null);
+export const DashContext = createContext<IDashProvider>({} as IDashProvider);
 
-const DashProvider = ({ children }: IDashProviderProps) => {
+export const DashProvider = ({ children }: IDashProviderProps) => {
   const [posts, setPosts] = useState<IDashPosts[]>([] as IDashPosts[]);
   const [newPost, setNewPost] = useState<IPosts>({} as IPosts);
   const [film, setFilm] = useState<IFilm>({} as IFilm);

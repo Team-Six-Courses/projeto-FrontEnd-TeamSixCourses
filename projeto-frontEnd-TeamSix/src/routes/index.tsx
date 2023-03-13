@@ -8,6 +8,7 @@ import { NotFoundPage } from '../pages/NotFound/NotFound404Page';
 import { ProfilePage } from '../pages/Profile/ProfilePage';
 import { ProtectRoute } from '../pages/ProtectRoute/ProtectRoute';
 import { RegisterPage } from '../pages/Register/RegisterPage';
+import { DashProvider } from '../Providers/DashContext/DashContext';
 import { ProfileProvider } from '../Providers/ProfileContext/ProfileContext';
 
 export const RoutesPages = () => {

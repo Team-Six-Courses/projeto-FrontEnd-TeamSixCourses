@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export interface IHeaderProps{
-    background: string
+export interface IHeaderProps {
+  background: string;
 }
 
 export const StyledHeader = styled.header<IHeaderProps>`
   height: 100px;
   width: 100vw;
-  background: ${props=>props.background};
+  background: ${(props) => props.background};
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
@@ -15,6 +15,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
   position: fixed;
   top: 0;
 
+  z-index: 1;
 
   div:nth-child(1) {
     display: flex;
