@@ -9,18 +9,19 @@ import {
   IProfileProps,
   IProfileProvider,
   IUser,
-} from './type';
+} from '../../types/type';
 
 export const ProfileContext = createContext<IProfileProvider>(
   {} as IProfileProvider
 );
 
 export const ProfileProvider = ({ children }: IProfileProps) => {
-  const [user, setUser] = useState<IUser>({} as IUser);
+  const [user, setUser] = useState<IUser | null>(null);
   const [activities, setActivities] = useState<IPosts[]>([] as IPosts[]);
+  const [userForId, setUserForId] = useState<IUser[]>([] as IUser[]);
 
   const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmljaXVzQG1haWwuY29tIiwiaWF0IjoxNjc4NDAxMjg4LCJleHAiOjE2Nzg0MDQ4ODgsInN1YiI6IjEifQ.V6oPf3dsGlsnepkd0taWoEN_2I8hcq6v1QOHiGLjy58'; // localStorage.getItem('@TOKEN');
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmljaXVzQG1haWwuY29tIiwiaWF0IjoxNjc4NTU5NTI4LCJleHAiOjE2Nzg1NjMxMjgsInN1YiI6IjEifQ.ivCNkIzr_EeiCbh5EhvRLZlsa9_jl_0pj1B7zC5Gocg'; // localStorage.getItem('@TOKEN');
   const id = 1; // localStorage.getItem("@ID")
 
   const getUser = async () => {
@@ -55,26 +56,26 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      const responseComments = await api.get<IComments[]>('/comments', {
+      /*  const responseComments = await api.get<IComments[]>('/comments', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      });
+      }); */
 
       const posts = responsePost.data.filter((post) => post.userId === id);
       const likePosts = responseLikePost.data.filter(
         (likeComment) => likeComment.userId === id
       );
-      const commentsPost = responseComments.data.filter(
+      /*  const commentsPost = responseComments.data.filter(
         (comment) => comment.userId === id
-      );
+      ); */
 
       const postFilterLike = likePosts.map((like) =>
         responsePost.data.filter((post) => post.id === like.postId)
       );
-      const postFilterCommentPost = commentsPost.map((comment) =>
+      /* const postFilterCommentPost = commentsPost.map((comment) =>
         responsePost.data.filter((post) => post.id === comment.postId)
-      );
+      ); */
 
       setActivities(posts);
       postFilterLike.map((post) => setActivities([...activities, ...post]));
@@ -85,12 +86,36 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
       console.error(error);
     }
   };
+  
   useEffect(() => {
     getPost();
   }, []);
 
+  const getUserForId = async (id: number) => {
+    try {
+      const response = await api.get<IUser>(`/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserForId([...userForId, response.data]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addUserForId = () => {
+    return activities.map((post) => {
+      getUserForId(post.userId);
+    });
+  };
+
+  useEffect(() => {
+    addUserForId();
+  }, []);
+
   return (
-    <ProfileContext.Provider value={{ user, activities, token }}>
+    <ProfileContext.Provider value={{ user, activities, userForId }}>
       {children}
     </ProfileContext.Provider>
   );
