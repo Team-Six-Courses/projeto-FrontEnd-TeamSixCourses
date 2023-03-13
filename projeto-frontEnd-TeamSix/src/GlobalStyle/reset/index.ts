@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const StyledReset = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -32,7 +32,10 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 150%;
+
+	width: 100%;
+	height: 100vh
 }
 ol, ul {
 	list-style: none;
@@ -53,4 +56,4 @@ table {
 button {
 	cursor: pointer;
 }
-`
+`;
