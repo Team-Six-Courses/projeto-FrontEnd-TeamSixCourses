@@ -4,17 +4,18 @@ import { DashStyle, FormStyled, ListStyled } from './style';
 import { useForm } from 'react-hook-form';
 import Header from '../../component/Header';
 
-interface IDashForm{
+interface IDashForm {
   title: string;
   description: string;
-  userId: number ;
+  userId: number;
 }
 
-export const DashboardPage = ()  => {
-  console.log('Dashboard')
-
-  const { register, handleSubmit, formState: { errors } } = useForm<IDashForm>();
-
+export const DashboardPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IDashForm>();
 
   return (
            <DashStyle>
@@ -51,44 +52,69 @@ export const DashboardPage = ()  => {
                     <span>Diretor</span>
                   </div>
 
-                </div>
+              <div className="box_infos_tags">
+                <span>10</span>
+                <p>06/11/2014 (BR)</p>
+                <p className="circle" />
+                <p>Aventura, Drama, Ficção cientifica</p>
+                <p className="circle" />
+                <p>2h 49m</p>
               </div>
-              </div>
-            </section>
 
-            <div className='call_film'>
-              <h1>Entre nessa aventura INTERESTELAR</h1>
+              <strong>Reproduzir trailer</strong>
+
+              <div className="box_infos_sinopse">
+                <h3>Sinopse</h3>
+                <p>
+                  As reservas naturais da Terra estão chegando ao fim e um grupo
+                  de astronautas recebe a missão de verificar possíveis planetas
+                  para receberem a população mundial, possibilitando a
+                  continuação da espécie. Cooper é chamado para liderar o grupo
+                  e aceita a missão sabendo que pode nunca mais ver os filhos.
+                  Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um
+                  novo lar.
+                </p>
+              </div>
+
+              <div className="director">
+                <p>Christopher Nolan</p>
+                <span>Diretor</span>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <main>
-              <div className='filter_bgmain'>
-                <div className='box_main_content'>
+      <div className="call_film">
+        <h1>Entre nessa aventura INTERESTELAR</h1>
+      </div>
 
-                  <FormStyled onSubmit={handleSubmit(()=>{})}>
-                      <div className='user_title'> 
-                        <img src='../../assets/userImg.svg'/>
-                        <InputDash
-                         placeholder='O que você está pensando?'
-                         type='text'
-                         register={register('title')}
-                         error={errors.title}
-                          />
-                      </div>
-                        <DashText placeholder='O que você está pensando?' register={register('description')}/>
-                        <div className='box_button'>
-                          <button type='submit'>Enviar</button>
-                        </div>
-
-                  </FormStyled>
-
-                  <ListStyled>
-                 
-                  </ListStyled>
-                  
-                </div>
+      <main>
+        <div className="filter_bgmain">
+          <div className="box_main_content">
+            <FormStyled onSubmit={handleSubmit(() => {})}>
+              <div className="user_title">
+                <img src="../../assets/userImg.svg" />
+                <InputDash
+                  placeholder="O que você está pensando?"
+                  type="text"
+                  register={register('title')}
+                  error={errors.title}
+                />
               </div>
-            </main>
-           </DashStyle>
-  ) 
-}
+              <DashText
+                placeholder="O que você está pensando?"
+                register={register('description')}
+              />
+              <div className="box_button">
+                <button type="submit">Enviar</button>
+              </div>
+            </FormStyled>
 
+            <ListStyled></ListStyled>
+          </div>
+        </div>
+      </main>
+    </DashStyle>
+  );
+};

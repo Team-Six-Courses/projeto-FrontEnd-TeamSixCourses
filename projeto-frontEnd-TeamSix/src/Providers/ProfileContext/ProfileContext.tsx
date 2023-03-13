@@ -9,7 +9,7 @@ import {
   IProfileProps,
   IProfileProvider,
   IUser,
-} from './type';
+} from '../../types/type';
 
 export const ProfileContext = createContext<IProfileProvider>(
   {} as IProfileProvider

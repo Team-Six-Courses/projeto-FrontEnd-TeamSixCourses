@@ -8,12 +8,6 @@ export interface IProfileProvider {
   userForId: IUser[];
 }
 
-export interface IPosts {
-  title: string;
-  description: string;
-  userId: number;
-}
-
 export interface ILikePost {
   userId: number;
   postId: number;
@@ -30,7 +24,7 @@ export interface IComments {
   postId: number;
   comment: SVGStringList;
   userId: number;
-  id: number;
+  id?: number;
 }
 
 export interface IUser {
@@ -48,6 +42,6 @@ export interface IPosts {
   title: string;
   description: string;
   userId: number;
-  filmId: number;
-  id: number;
+  filmId?: number;
+  id?: number;
 }
