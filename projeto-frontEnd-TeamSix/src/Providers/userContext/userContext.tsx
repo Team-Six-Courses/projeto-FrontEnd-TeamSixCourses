@@ -32,7 +32,7 @@ export const UserProvider = ({ children }: IUserDefaultProps) => {
             toast.success('Cadastro Realizado com sucesso')
             navigate('/login')
         } catch (error) {
-            toast.error(error)
+            toast.error('Cadastro não realizado')
         }
     }
 
