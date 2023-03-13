@@ -86,6 +86,7 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
       console.error(error);
     }
   };
+  
   useEffect(() => {
     getPost();
   }, []);
@@ -112,6 +113,7 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
   useEffect(() => {
     addUserForId();
   }, []);
+
   return (
     <ProfileContext.Provider value={{ user, activities, userForId }}>
       {children}
