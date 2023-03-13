@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Navigate, Outlet, useNavigate } from 'react-router-dom';
 
 export const ProtectRoute = () => {
   const navigate = useNavigate();
@@ -12,5 +12,5 @@ export const ProtectRoute = () => {
     }
   }, []);
 
-  return token ? <Outlet /> : navigate('/');
+  return token ? <Outlet /> : <Navigate to="/"/>;
 };

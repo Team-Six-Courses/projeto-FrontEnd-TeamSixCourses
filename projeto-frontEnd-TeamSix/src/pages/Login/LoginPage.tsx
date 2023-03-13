@@ -43,7 +43,7 @@ export const LoginPage = () => {
         <h2>Login</h2>
         <Input type='email' label='email' placeholder='Digite seu email' register={register('email')} error={errors.email} />
         <Input type='password' label='senha' placeholder='Digite sua senha' register={register('password')} error={errors.password} />
-        <Button type='submit' name='Login'></Button>
+        <Button $background='rgba(255, 255, 255, 0.85)' $color='rgba(0, 0, 0, 1)'type='submit' name='Login'></Button>
         <p>Não possui uma conta?</p>
         <Link to='/cadastro'>Cadastrar</Link>
       </StyledFormLogin>
