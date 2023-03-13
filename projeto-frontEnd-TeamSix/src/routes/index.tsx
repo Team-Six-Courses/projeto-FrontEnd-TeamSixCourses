@@ -6,6 +6,7 @@ import { DiscussionPage } from '../pages/DiscussionPage';
 import { LoginPage } from '../pages/Login/LoginPage';
 import { NotFoundPage } from '../pages/NotFound/NotFound404Page';
 import { ProfilePage } from '../pages/Profile/ProfilePage';
+import { ProtectRoute } from '../pages/ProtectRoute/ProtectRoute';
 import { RegisterPage } from '../pages/Register/RegisterPage';
 import { ProfileProvider } from '../Providers/ProfileContext/ProfileContext';
 
@@ -14,6 +15,7 @@ export const RoutesPages = () => {
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
+      {/* <Route path='home' element={<ProtectRoute/>}> */}
       <Route path="/home" element={<DashboardPage />} />
       <Route
         path="/perfil"
@@ -23,6 +25,7 @@ export const RoutesPages = () => {
           </ProfileProvider>
         }
       />
+      {/* </Route> */}
       <Route path="home/discussion/:id:" element={<DiscussionPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
