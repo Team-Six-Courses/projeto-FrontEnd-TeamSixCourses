@@ -10,7 +10,7 @@ export const DashStyle = styled.div`
   height: max-content;
   margin-top: 100px;
 
-  section {
+  .section-one {
     width: 100%;
     height: 688px;
     margin: 0px;
