@@ -4,7 +4,7 @@ import { App } from '../App';
 import { DashboardPage } from '../pages/DashboardPage';
 import { DiscussionPage } from '../pages/DiscussionPage';
 import { LoginPage } from '../pages/LoginPage';
-import { NotFoundPage } from '../pages/NotFound404Page';
+import { NotFoundPage } from '../pages/NotFound/NotFound404Page';
 import { ProfilePage } from '../pages/Profile/ProfilePage';
 import { RegisterPage } from '../pages/Register/RegisterPage';
 import { ProfileProvider } from '../Providers/ProfileContext/ProfileContext';
