@@ -11,6 +11,8 @@ export const StyledHeader = styled.header`
   position: fixed;
   top: 0;
 
+  z-index: 1;
+
   div:nth-child(1) {
     display: flex;
     flex-direction: column;

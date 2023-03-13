@@ -7,6 +7,7 @@ import { LoginPage } from '../pages/Login/LoginPage';
 import { NotFoundPage } from '../pages/NotFound/NotFound404Page';
 import { ProfilePage } from '../pages/Profile/ProfilePage';
 import { RegisterPage } from '../pages/Register/RegisterPage';
+import { DashProvider } from '../Providers/DashContext/DashContext';
 import { ProfileProvider } from '../Providers/ProfileContext/ProfileContext';
 
 export const RoutesPages = () => {
@@ -14,7 +15,14 @@ export const RoutesPages = () => {
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
-      <Route path="/home" element={<DashboardPage />} />
+      <Route
+        path="/home"
+        element={
+          <DashProvider>
+            <DashboardPage />
+          </DashProvider>
+        }
+      />
       <Route
         path="/perfil"
         element={
