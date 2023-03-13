@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Header = ({background}: IHeaderProps ) => {
     const [modalProfile, setModalProfile] = useState(false)
+    const token = localStorage.getItem("@TOKEN")
     const navigate = useNavigate()
 
     return (
@@ -14,21 +15,23 @@ const Header = ({background}: IHeaderProps ) => {
                 <h1>TEAM SIX</h1>
                 <small>Films</small>
             </div>
-            <div onClick={() => setModalProfile(!modalProfile)}>
+           { token ?  
+           <div onClick={() => setModalProfile(!modalProfile)}>
                 <figure>
                     <img src="AVATAR" alt="AVATARPROFILE" />
                 </figure>
-                {modalProfile ? <MdOutlineKeyboardArrowDown /> : (
-                    <>
-                        <MdOutlineKeyboardArrowUp />
-                        <div className='modalProfile'>
-                            <p onClick={() => { navigate('/perfil') }}>Perfil</p>
-                            <p onClick={() => { }}>Avatar</p>
-                            <p onClick={() => { localStorage.removeItem("@TOKEN"); navigate('/') }}>Sair</p>
-                        </div>
-                    </>
-                )}
-            </div>
+                    {!modalProfile ? <MdOutlineKeyboardArrowDown /> : (
+                        <>
+                            <MdOutlineKeyboardArrowUp />
+                            <div className='modalProfile'>
+                                <p onClick={() => { navigate('/perfil') }}>Perfil</p>
+                                <p onClick={() => { }}>Avatar</p>
+                                <p onClick={() => { localStorage.removeItem("@TOKEN"); navigate('/') }}>Sair</p>
+                            </div>
+                        </>
+                    )}
+              </div>  : null }
+           
         </StyledHeader>
     )
 }
