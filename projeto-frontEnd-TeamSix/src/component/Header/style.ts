@@ -14,6 +14,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
   justify-content: space-between;
   position: fixed;
   top: 0;
+  
 
   div:nth-child(1) {
     display: flex;
