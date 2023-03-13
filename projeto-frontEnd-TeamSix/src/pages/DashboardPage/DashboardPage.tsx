@@ -10,8 +10,6 @@ interface IDashForm {
 }
 
 export const DashboardPage = () => {
-  console.log('Dashboard');
-
   const {
     register,
     handleSubmit,

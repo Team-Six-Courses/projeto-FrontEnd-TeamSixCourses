@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { RoutesPages } from './routes';
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
   return (
@@ -20,7 +20,7 @@ export const App = () => {
         pauseOnHover
         theme="light"
       />
-      <Navigate to="/login" />
+      {/*  <Navigate to="/login" /> */}
     </div>
   );
 };
