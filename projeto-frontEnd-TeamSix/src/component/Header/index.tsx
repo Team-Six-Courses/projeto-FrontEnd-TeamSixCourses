@@ -24,7 +24,7 @@ const Header = ({background}: IHeaderProps ) => {
                         <>
                             <MdOutlineKeyboardArrowUp />
                             <div className='modalProfile'>
-                                <p onClick={() => { navigate('/perfil') }}>Perfil</p>
+                                <p onClick={() => { navigate('/home/perfil') }}>Perfil</p>
                                 <p onClick={() => { }}>Avatar</p>
                                 <p onClick={() => { localStorage.removeItem("@TOKEN"); navigate('/') }}>Sair</p>
                             </div>
