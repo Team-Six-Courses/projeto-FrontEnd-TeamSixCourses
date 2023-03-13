@@ -1,4 +1,3 @@
-import { height } from '@mui/system';
 import React, { useContext } from 'react';
 import { Card } from '../../component/Cards';
 import { InformationProfile } from '../../component/InformationsProfile';
