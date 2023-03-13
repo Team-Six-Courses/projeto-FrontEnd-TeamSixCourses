@@ -1,8 +1,45 @@
-import React from 'react';
-import { StyledMainLogin } from './style';
+import React, { useContext } from 'react';
+import { Input } from '../../component/Input';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { StyledFormLogin, StyledMainLogin } from './style';
+import { SchemaLogin } from './schema';
+import { Button } from '../../component/Button';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../Providers/userContext/userContext';
+
+interface Iform {
+  id: string,
+  email: string,
+  name: string,
+  password: string,
+  avatar: 'null'
+  confirmPassword: string,
+}
 
 export const LoginPage = () => {
-  return(
-    <StyledMainLogin>Login</StyledMainLogin>
-  ) 
+  const { loading, loginUser} = useContext(UserContext)
+
+  const { register, handleSubmit, formState: { errors }
+  } = useForm<Iform>({
+    mode: 'onChange',
+    resolver: yupResolver(SchemaLogin),
+  })
+
+  const submit: SubmitHandler<Iform> = (form) => {
+    loginUser(form)
+  }
+
+  return (
+    <StyledMainLogin>
+      <StyledFormLogin onSubmit={handleSubmit(submit)}>
+        <h2>Login</h2>
+        <Input type='email' label='email' placeholder='Digite seu email' register={register('email')} error={errors.email} />
+        <Input type='password' label='senha' placeholder='Digite sua senha' register={register('password')} error={errors.password} />
+        <Button type='submit' name='Login'></Button>
+        <p>Não possui uma conta?</p>
+        <Link to='/cadastro'>Cadastrar</Link>
+      </StyledFormLogin>
+    </StyledMainLogin>
+  )
 };

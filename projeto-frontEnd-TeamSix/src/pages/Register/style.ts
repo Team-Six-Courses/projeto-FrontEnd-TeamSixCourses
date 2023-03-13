@@ -11,7 +11,7 @@ export const StyledMainRegister = styled.main`
   background-repeat: no-repeat;
   background-origin: content-box;
   background-attachment: fixed;
-  background-position: center;
+  background-position: top;
   background-size: cover;
 `;
 
