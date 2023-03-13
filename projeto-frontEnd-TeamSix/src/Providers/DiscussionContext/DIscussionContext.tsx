@@ -3,9 +3,9 @@ import { api } from '../../API';
 import { IPosts } from '../../types/type';
 
 const DiscussionContext = createContext({});
-
+/* 
 const DiscussionProvider = () => {
-  const [ṕost, setPost] = useContext<IPosts>(null as IPosts);
+  const [ṕost, setPost] = useContext<IPosts>({} as IPosts);
   const token = localStorage.getItem('@TOKEN');
 
   const GetPost = async () => {
@@ -21,4 +21,4 @@ const DiscussionProvider = () => {
   };
 
   return <DiscussionContext.Provider value={}></DiscussionContext.Provider>;
-};
+}; */
