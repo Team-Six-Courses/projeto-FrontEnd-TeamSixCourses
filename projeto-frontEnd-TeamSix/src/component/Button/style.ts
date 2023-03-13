@@ -9,7 +9,6 @@ export const StyledButton = styled.button<IStyledProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 130px;
   height: 42px;
   background-color: ${(props) => props.$background};
   border-radius: 8px;
