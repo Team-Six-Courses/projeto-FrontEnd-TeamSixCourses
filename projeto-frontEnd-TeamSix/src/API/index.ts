@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: 'https://teamsixfilms.onrender.com',
+  baseURL: 'https://localhost:3001',
   timeout: 10000,
 }) 
 
