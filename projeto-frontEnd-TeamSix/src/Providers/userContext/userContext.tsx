@@ -59,7 +59,7 @@ export const UserProvider = ({ children }: IUserDefaultProps) => {
             setLoading(true)
             const response = await api.post('/login', formData)
             console.log(response)            
-            // localStorage.setItem('@TOKEN', )
+            //localStorage.setItem('@TOKEN', )
             toast.success('Login Realizado')
             navigate('/home')
         } catch (error) {
