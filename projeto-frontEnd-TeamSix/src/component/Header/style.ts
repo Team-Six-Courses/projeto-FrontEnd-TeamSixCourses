@@ -14,7 +14,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
   justify-content: space-between;
   position: fixed;
   top: 0;
-  
+
 
   div:nth-child(1) {
     display: flex;
@@ -26,7 +26,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
       font-family: 'Inter';
       font-style: normal;
       font-weight: 700;
-      font-size: 34px;
+      font-size: 32px;
       line-height: 34px;
       color: #ffffff;
     }
@@ -35,7 +35,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
       font-family: 'Russo One';
       font-style: normal;
       font-weight: 700;
-      font-size: 26px;
+      font-size: 20px;
       line-height: 34px;
       color: #ff7d04;
     }
