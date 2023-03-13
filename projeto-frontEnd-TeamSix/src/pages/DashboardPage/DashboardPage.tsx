@@ -2,6 +2,7 @@ import { InputDash } from '../DashboardPage/InputDash';
 import { DashText } from '../DashboardPage/DashText';
 import { DashStyle, FormStyled, ListStyled } from './style';
 import { useForm } from 'react-hook-form';
+import Header from '../../component/Header';
 
 interface IDashForm{
   title: string;
@@ -17,7 +18,7 @@ export const DashboardPage = ()  => {
 
   return (
            <DashStyle>
-            <header></header>
+            <Header></Header>
             <section>
               <div className='filter_bg'>
               <div className='box_section_content'>
