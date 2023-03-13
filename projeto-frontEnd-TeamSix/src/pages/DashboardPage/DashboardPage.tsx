@@ -3,9 +3,12 @@ import { DashText } from '../DashboardPage/DashText';
 import { DashStyle, FormStyled, ListStyled } from './style';
 import { useForm } from 'react-hook-form';
 import Header from '../../component/Header';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DashContext } from '../../Providers/DashContext/DashContext';
 import { Card } from '../../component/Cards';
+import { IPosts, IUser } from '../../types/type';
+import { api } from '../../API';
+import { IDashPosts } from '../../Providers/DashContext/type';
 
 interface IDashForm {
   title: string;
@@ -15,12 +18,33 @@ interface IDashForm {
 
 export const DashboardPage = () => {
   const { film, posts } = useContext(DashContext);
+  const [userForId, setUserForId] = useState<IUser[]>([] as IUser[]);
+  const token = localStorage.getItem('@TOKEN');
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IDashForm>();
+
+  const getUserForId = async (id: number) => {
+    try {
+      const response = await api.get<IUser>(`/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserForId([...userForId, response.data]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addUserForId = (cardPosts: IDashPosts[]) => {
+    return cardPosts.map((post) => {
+      getUserForId(post.userId);
+    });
+  };
 
   return (
     <DashStyle>
@@ -87,13 +111,14 @@ export const DashboardPage = () => {
             </FormStyled>
 
             <ListStyled>
-              {posts.map((post) => {
+              {posts.map((post, index) => {
+                addUserForId(posts);
                 return (
                   <Card
                     key={post.id}
                     title={post.title}
                     descrition={post.description}
-                    img={'null'}
+                    img={userForId[index]?.avatar}
                   />
                 );
               })}
