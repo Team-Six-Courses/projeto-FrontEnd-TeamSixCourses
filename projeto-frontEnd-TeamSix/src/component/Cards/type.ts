@@ -1,5 +1,5 @@
 export interface ICard {
-  img: string | undefined;
+  img: string;
   title: string;
   descrition: string;
 }
