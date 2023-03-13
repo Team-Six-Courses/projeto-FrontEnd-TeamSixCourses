@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StyledLi } from './style';
+import { StyledHeaderPost, StyledImg, StyledLi } from './style';
 import { ICard } from './type';
 
 export const Card = ({ title, descrition, img }: ICard) => {
   return (
     <StyledLi>
-      <div>
-        <img src={img} alt="Foto de perfil" />
+      <StyledHeaderPost>
+        <StyledImg $src={img} />
         <h3>{title}</h3>
-      </div>
+      </StyledHeaderPost>
       <p>{descrition}</p>
-      <Link to="">Continuar lendo</Link>
+      <Link to="">Continuar lendo...</Link>
     </StyledLi>
   );
 };
