@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import { StyledHeader } from './style'
+import { IHeaderProps, StyledHeader } from './style'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({background}: IHeaderProps ) => {
     const [modalProfile, setModalProfile] = useState(false)
     const navigate = useNavigate()
 
     return (
-        <StyledHeader>
+        <StyledHeader background={background}>
             <div>
                 <h1>TEAM SIX</h1>
                 <small>Films</small>

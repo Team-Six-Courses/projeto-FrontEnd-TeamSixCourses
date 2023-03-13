@@ -13,6 +13,9 @@ export const StyledMainRegister = styled.main`
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  flex-direction: column;
+  gap: 50px;
+ 
 `;
 
 export const StyledFormRegister = styled.form`

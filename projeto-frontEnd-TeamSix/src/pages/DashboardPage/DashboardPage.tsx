@@ -19,7 +19,7 @@ export const DashboardPage = () => {
 
   return (
            <DashStyle>
-            <Header></Header>
+            <Header background='rgba(3, 37, 65, 1)'/>
             <section>
               <div className='filter_bg'>
               <div className='box_section_content'>
