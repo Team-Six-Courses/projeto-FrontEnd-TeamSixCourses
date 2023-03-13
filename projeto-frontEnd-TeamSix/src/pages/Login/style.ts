@@ -6,6 +6,7 @@ export const StyledMainLogin = styled.main`
   width: 100vw;
   height: 100vh;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   background: url(${img});
   background-repeat: no-repeat;
@@ -24,6 +25,14 @@ export const StyledFormLogin = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
+
+  @media (max-width: 769px ) {
+    min-width: 360px;
+  }
+
+  @media (max-width: 420px ) {
+    min-width: 250px;
+  }
 
   h2 {
     font-family: 'Inter';

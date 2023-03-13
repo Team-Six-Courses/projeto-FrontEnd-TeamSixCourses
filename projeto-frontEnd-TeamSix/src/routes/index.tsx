@@ -15,17 +15,17 @@ export const RoutesPages = () => {
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
-      {/* <Route path='home' element={<ProtectRoute/>}> */}
-      <Route path="/home" element={<DashboardPage />} />
-      <Route
-        path="/perfil"
-        element={
-          <ProfileProvider>
-            <ProfilePage />
-          </ProfileProvider>
-        }
-      />
-      {/* </Route> */}
+      <Route path="/home" element={<ProtectRoute />}>
+        <Route index element={<DashboardPage />} />
+        <Route
+          path="/home/perfil"
+          element={
+            <ProfileProvider>
+              <ProfilePage />
+            </ProfileProvider>
+          }
+        />
+      </Route>
       <Route path="home/discussion/:id:" element={<DiscussionPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
