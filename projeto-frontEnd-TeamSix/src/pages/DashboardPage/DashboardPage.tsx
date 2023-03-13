@@ -24,7 +24,7 @@ export const DashboardPage = () => {
 
   return (
     <DashStyle>
-      <Header></Header>
+      <Header />
       <section className="section-one">
         <div className="filter_bg">
           <div className="box_section_content">
