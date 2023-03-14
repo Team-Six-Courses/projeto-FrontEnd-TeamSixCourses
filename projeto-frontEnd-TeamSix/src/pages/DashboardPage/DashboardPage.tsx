@@ -3,7 +3,7 @@ import { DashText } from '../DashboardPage/DashText';
 import { DashStyle, FormStyled, ListStyled } from './style';
 import { useForm } from 'react-hook-form';
 import Header from '../../component/Header';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DashContext } from '../../Providers/DashContext/DashContext';
 import { Card } from '../../component/Cards';
 import { IPosts, IUser } from '../../types/type';
@@ -40,11 +40,15 @@ export const DashboardPage = () => {
     }
   };
 
-  const addUserForId = (cardPosts: IDashPosts[]) => {
-    return cardPosts.map((post) => {
+  const addUserForId = () => {
+    return posts.map((post) => {
       getUserForId(post.userId);
     });
   };
+
+  useEffect(() => {
+    addUserForId();
+  }, []);
 
   return (
     <DashStyle>
@@ -112,7 +116,6 @@ export const DashboardPage = () => {
 
             <ListStyled>
               {posts.map((post, index) => {
-                addUserForId(posts);
                 return (
                   <Card
                     key={post.id}

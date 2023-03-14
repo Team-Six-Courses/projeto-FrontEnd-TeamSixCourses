@@ -14,17 +14,16 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
   const getFilm = async () => {
     try {
       const response = await api<IFilm>('/films/1');
-      console.log(response.data)
       setFilm(response.data);
     } catch (error) {
-      console.error;
+      console.error(error);
     }
   };
 
   useEffect(() => {
     getPosts();
     getFilm();
-  },[]);
+  }, []);
 
   const getPosts = async () => {
     try {
@@ -36,7 +35,6 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
           },
         }
       );
-      console.log(response.data)
       setPosts(response.data);
     } catch (error) {
       console.error(error);
