@@ -6,11 +6,7 @@ import { StyledHeaderPost, StyledImg, StyledLi } from './style';
 import { ICard } from './type';
 
 export const Card = ({ title, descrition, img, id }: ICard) => {
-  const { getPost } = useContext(DiscussionContext)
-  // const discussion = (id)=>{
-  //   getPost(id)
-  //   navigate("home/discussion/:id:")
-  // }
+  const { getPost } = useContext(DiscussionContext);
   return (
     <StyledLi key={id}>
       <StyledHeaderPost>
@@ -18,7 +14,9 @@ export const Card = ({ title, descrition, img, id }: ICard) => {
         <h3>{title}</h3>
       </StyledHeaderPost>
       <p>{descrition}</p>
-      <button type='button' onClick={()=> getPost(id)} >Continuar lendo...</button>
+      <button type="button" onClick={() => getPost(id)}>
+        Continuar lendo...
+      </button>
     </StyledLi>
   );
 };
