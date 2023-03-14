@@ -1,6 +1,8 @@
 import { ClassNames } from '@emotion/react';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../../API';
+import { IUser } from '../../types/type';
 import { Button } from '../Button';
 import { Img } from '../ImgProfile';
 import {
@@ -19,6 +21,8 @@ export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
   const [avatars, setAvatars] = useState<IAvatars[]>([] as IAvatars[]);
   const [avatarSelect, setAvatarSelect] = useState('');
 
+  const navigate = useNavigate();
+
   const getAvatars = async () => {
     try {
       const response = await api.get<IAvatars[]>('/avatars');
@@ -32,14 +36,14 @@ export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
   useEffect(() => {
     const editAvatar = async (avatarString: string) => {
       const token = localStorage.getItem('@TOKEN');
-      const id = localStorage.getItem('@USERID');
+      const id = Number(localStorage.getItem('@USERID'));
 
       const request = {
         avatar: avatarString,
       };
 
       try {
-        await api.patch(`/users/${id}}`, request, {
+        await api.patch<IUser>(`/users/1`, request, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -48,6 +52,7 @@ export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
         console.error(error);
       }
     };
+    editAvatar(avatarSelect);
   }, [avatarSelect]);
 
   useEffect(() => {
@@ -88,6 +93,9 @@ export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
             $background="rgba(3, 37, 65, 1)"
             type="button"
             name="Selecionar"
+            onClick={() => {
+              setModalAvatar(false);
+            }}
           />
         </StyledButtons>
       </StyledModalAvatar>
