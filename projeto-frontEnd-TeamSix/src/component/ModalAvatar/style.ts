@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const StyledModalContainer = styled.div`
   position: absolute;
   top: 0;
@@ -44,12 +45,13 @@ export const StyledUlAvatars = styled.ul`
   width: 518px;
   height: 350px;
 
-  border: solid 1px #fff;
+  border: solid 2px #fff;
 
   margin: 0 auto 50px auto;
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   flex-wrap: wrap;
 
@@ -57,16 +59,20 @@ export const StyledUlAvatars = styled.ul`
 
   li button {
     border: solid 2px;
+    width: 88px;
+    height: 88px;
 
-    width: auto;
-    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    border-radius: 50%;
     background: none;
   }
   li button:focus {
-    border-radius: 100%;
-    border: solid 2px #fff;
+    border: solid 1px #fff;
   }
+
 `;
 
 export const StyledButtons = styled.div`
