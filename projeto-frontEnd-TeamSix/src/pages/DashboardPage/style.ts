@@ -244,5 +244,6 @@ export const FormStyled = styled.form`
 export const ListStyled = styled.ul`
   li {
     width: 750px;
+    margin-bottom: 20px;
   }
 `;
