@@ -64,7 +64,7 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
   };
 
   return (
-    <DashContext.Provider value={{ posts, film, addPost }}>
+    <DashContext.Provider value={{ posts, film, addPost}}>
       {children}
     </DashContext.Provider>
   );
