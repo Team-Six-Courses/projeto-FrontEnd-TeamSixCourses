@@ -29,7 +29,7 @@ export const StyledLi = styled.li`
     overflow: hidden;
     display: -webkit-box;
     line-height: 150%;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 
     width: 95%;
@@ -52,6 +52,10 @@ export const StyledLi = styled.li`
 
     background-color: transparent;
     color: #f5f5f5;
+    cursor: pointer;
+    :hover{
+      color: #FF7D04;
+    }
   }
 
   @media (max-width: 769px) {

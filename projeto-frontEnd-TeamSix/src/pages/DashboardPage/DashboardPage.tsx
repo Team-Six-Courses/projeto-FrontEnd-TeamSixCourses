@@ -1,11 +1,14 @@
 import { InputDash } from '../DashboardPage/InputDash';
 import { DashText } from '../DashboardPage/DashText';
 import { DashStyle, FormStyled, ListStyled } from './style';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import Header from '../../component/Header';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DashContext } from '../../Providers/DashContext/DashContext';
 import { Card } from '../../component/Cards';
+import { IPosts, IUser } from '../../types/type';
+import { api } from '../../API';
+import { IDashPosts } from '../../Providers/DashContext/type';
 
 interface IDashForm {
   title: string;
@@ -14,13 +17,50 @@ interface IDashForm {
 }
 
 export const DashboardPage = () => {
-  const { film, posts } = useContext(DashContext);
+  const { film, posts, addPost } = useContext(DashContext);
+  const [userForId, setUserForId] = useState<IUser[]>([] as IUser[]);
+  const token = localStorage.getItem('@TOKEN');
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<IDashForm>();
+  } = useForm<IDashForm>({
+    mode: 'onBlur',
+    defaultValues: {
+      title: '',
+      description: '',
+    },
+  });
+
+  const submit: SubmitHandler<IDashForm> = (formData) => {
+    addPost(formData);
+    reset();
+  };
+
+  const getUserForId = async (id: number) => {
+    try {
+      const response = await api.get<IUser>(`/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserForId([...userForId, response.data]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addUserForId = () => {
+    return posts.map((post) => {
+      getUserForId(post.userId);
+    });
+  };
+
+  useEffect(() => {
+    addUserForId();
+  }, []);
 
   return (
     <DashStyle>
@@ -67,7 +107,7 @@ export const DashboardPage = () => {
       <main>
         <div className="filter_bgmain">
           <div className="box_main_content">
-            <FormStyled onSubmit={handleSubmit(() => {})}>
+            <FormStyled onSubmit={handleSubmit(submit)}>
               <div className="user_title">
                 <img src="../../assets/userImg.svg" />
                 <InputDash
@@ -87,14 +127,13 @@ export const DashboardPage = () => {
             </FormStyled>
 
             <ListStyled>
-              {posts.map((post) => {
-                console.log(post)
+              {posts.map((post, index) => {
                 return (
                   <Card id= {post.id}
                     // key={post.id}
                     title={post.title}
                     descrition={post.description}
-                    img={'null'}
+                    img={userForId[index]?.avatar}
                   />
                 );
               })}

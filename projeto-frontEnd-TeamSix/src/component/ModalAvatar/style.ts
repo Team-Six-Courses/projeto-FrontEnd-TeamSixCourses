@@ -22,6 +22,8 @@ export const StyledModalAvatar = styled.section`
   flex-direction: column;
   justify-content: center;
 
+  margin-top: 15px;
+
   gap: 30px;
 
   background-color: #032541;
@@ -45,6 +47,26 @@ export const StyledUlAvatars = styled.ul`
   border: solid 1px #fff;
 
   margin: 0 auto 50px auto;
+
+  display: flex;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 30px;
+
+  li button {
+    border: solid 2px;
+
+    width: auto;
+    height: auto;
+
+    background: none;
+  }
+  li button:focus {
+    border-radius: 100%;
+    border: solid 2px #fff;
+  }
 `;
 
 export const StyledButtons = styled.div`

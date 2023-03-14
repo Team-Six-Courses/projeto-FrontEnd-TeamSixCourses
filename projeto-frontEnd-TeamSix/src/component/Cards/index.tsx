@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 import { DiscussionContext } from '../../Providers/DiscussionContext/DIscussionContext';
+import { Img } from '../ImgProfile';
 import { StyledHeaderPost, StyledImg, StyledLi } from './style';
 import { ICard } from './type';
 
@@ -13,7 +14,7 @@ export const Card = ({ title, descrition, img, id }: ICard) => {
   return (
     <StyledLi key={id}>
       <StyledHeaderPost>
-        <StyledImg $src={img} />
+        <Img src={img} />
         <h3>{title}</h3>
       </StyledHeaderPost>
       <p>{descrition}</p>
