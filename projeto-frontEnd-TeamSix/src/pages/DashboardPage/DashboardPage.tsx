@@ -63,22 +63,25 @@ export const DashboardPage = () => {
   const getUser = async () => {
     const id = Number(localStorage.getItem('@USERID'));
     try {
-      const response = await api.get<IUser>(`users/${id}`, {
+      const response = await api.get<IUser>(`users/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
       setUser(response.data);
+
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    addUserForId();
     getUser();
   }, []);
+
+  useEffect(() => {
+    addUserForId();
+  }, [user]);
 
   return (
     <DashStyle>
@@ -145,13 +148,14 @@ export const DashboardPage = () => {
             </FormStyled>
 
             <ListStyled>
-              {posts.map((post, index) => {
+              {posts.map((post,index) => {
+                
                 return (
                   <Card id= {post.id}
-                    // key={post.id}
+                    key={post.id}
                     title={post.title}
                     descrition={post.description}
-                    img={userForId[index]?.avatar}
+                    img={userForId[post.id]?.avatar}
                   />
                 );
               })}

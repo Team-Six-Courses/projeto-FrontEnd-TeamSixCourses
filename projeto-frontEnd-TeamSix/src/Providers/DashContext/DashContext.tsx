@@ -47,7 +47,7 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
     const newData = {
       title: data.title,
       description: data.description,
-      userId: id,
+      userId: Number(id),
       filmId: data.filmId,
     };
 
