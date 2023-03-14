@@ -81,7 +81,7 @@ export const StyledHeaderPost = styled.div`
     font-size: 1.75rem;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
-
+    text-align: left;
     color: #f5f5f5;
   }
 
