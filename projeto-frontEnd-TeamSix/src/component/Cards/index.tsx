@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,10 +8,6 @@ import { ICard } from './type';
 
 export const Card = ({ title, descrition, img, id }: ICard) => {
   const { getPost } = useContext(DiscussionContext);
-
-
-  const navigate = useNavigate();
-
 
   return (
     <StyledLi key={id}>
@@ -25,7 +20,6 @@ export const Card = ({ title, descrition, img, id }: ICard) => {
         type="button"
         onClick={() => {
           getPost(id, img);
-          navigate('/home/discussion/:id:');
         }}
       >
         Continuar lendo...
