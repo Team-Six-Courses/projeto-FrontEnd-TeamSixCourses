@@ -3,9 +3,12 @@ import { DashText } from '../DashboardPage/DashText';
 import { DashStyle, FormStyled, ListStyled } from './style';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Header from '../../component/Header';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DashContext } from '../../Providers/DashContext/DashContext';
 import { Card } from '../../component/Cards';
+import { IPosts, IUser } from '../../types/type';
+import { api } from '../../API';
+import { IDashPosts } from '../../Providers/DashContext/type';
 
 interface IDashForm {
   title: string;
@@ -15,6 +18,8 @@ interface IDashForm {
 
 export const DashboardPage = () => {
   const { film, posts, addPost } = useContext(DashContext);
+  const [userForId, setUserForId] = useState<IUser[]>([] as IUser[]);
+  const token = localStorage.getItem('@TOKEN');
 
   const {
     register,
@@ -22,17 +27,40 @@ export const DashboardPage = () => {
     reset,
     formState: { errors },
   } = useForm<IDashForm>({
-      mode: "onBlur",
-      defaultValues: {
-        title: '',
-        description: '', 
-      } 
-    });
+    mode: 'onBlur',
+    defaultValues: {
+      title: '',
+      description: '',
+    },
+  });
 
   const submit: SubmitHandler<IDashForm> = (formData) => {
     addPost(formData);
     reset();
-  }
+  };
+
+  const getUserForId = async (id: number) => {
+    try {
+      const response = await api.get<IUser>(`/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserForId([...userForId, response.data]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addUserForId = () => {
+    return posts.map((post) => {
+      getUserForId(post.userId);
+    });
+  };
+
+  useEffect(() => {
+    addUserForId();
+  }, []);
 
   return (
     <DashStyle>
@@ -99,13 +127,13 @@ export const DashboardPage = () => {
             </FormStyled>
 
             <ListStyled>
-              {posts.map((post) => {
+              {posts.map((post, index) => {
                 return (
                   <Card
                     key={post.id}
                     title={post.title}
                     descrition={post.description}
-                    img={'null'}
+                    img={userForId[index]?.avatar}
                   />
                 );
               })}

@@ -16,14 +16,14 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
       const response = await api<IFilm>('/films/1');
       setFilm(response.data);
     } catch (error) {
-      console.error;
+      console.error(error);
     }
   };
 
   useEffect(() => {
     getPosts();
     getFilm();
-  },[]);
+  }, []);
 
   const getPosts = async () => {
     try {

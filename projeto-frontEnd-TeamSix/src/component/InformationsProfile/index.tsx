@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { ProfileContext } from '../../Providers/ProfileContext/ProfileContext';
 import { StyledImg } from '../Cards/style';
+import { Img } from '../ImgProfile';
 import { StyledUser, StyledUserInformations, StyleInformations } from './style';
 
 export const InformationProfile = () => {
   const { user } = useContext(ProfileContext);
-  console.log(user?.avatar);
 
   return (
     <StyleInformations>
@@ -13,7 +13,7 @@ export const InformationProfile = () => {
         <h2>Informações</h2>
       </div>
       <StyledUser>
-        <StyledImg $src={user?.avatar} />
+        <Img src={user?.avatar} />
         <div className="userInformations">
           <h4>{user?.name.toLocaleUpperCase()}</h4>
           <p>{user?.email}</p>
