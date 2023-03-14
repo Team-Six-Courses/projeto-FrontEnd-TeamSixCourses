@@ -1,24 +1,36 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../../API';
 import { IPosts } from '../../types/type';
+import { IDiscussionProvider, IDiscussionProviderProps } from './type';
 
-const DiscussionContext = createContext({});
-/* 
-const DiscussionProvider = () => {
-  const [ṕost, setPost] = useContext<IPosts>({} as IPosts);
+export const DiscussionContext = createContext<IDiscussionProvider>({} as IDiscussionProvider);
+
+export const DiscussionProvider = ({children}: IDiscussionProviderProps) => {
+  const [post, setPost] = useState<IPosts>({} as IPosts);
   const token = localStorage.getItem('@TOKEN');
+  const navigate = useNavigate()
 
-  const GetPost = async () => {
+  const getPost = async (id:number) => {
     try {
-      const response = await api.get<IPosts>('', {
+      const response = await api.get<IPosts>(`/posts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(response.data)
+      setPost(response.data)
+      navigate("/home/discussion/:id:")
     } catch (error) {
       console.error(error);
     }
   };
-
-  return <DiscussionContext.Provider value={}></DiscussionContext.Provider>;
-}; */
+// useEffect(()=>{
+//   getPost()
+// },[])
+  return (
+    <DiscussionContext.Provider value={{post, setPost, getPost}}>
+      {children}
+    </DiscussionContext.Provider>
+  );
+};
