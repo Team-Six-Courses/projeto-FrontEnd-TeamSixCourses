@@ -88,9 +88,10 @@ export const DashboardPage = () => {
 
             <ListStyled>
               {posts.map((post) => {
+                console.log(post)
                 return (
-                  <Card
-                    key={post.id}
+                  <Card id= {post.id}
+                    // key={post.id}
                     title={post.title}
                     descrition={post.description}
                     img={'null'}

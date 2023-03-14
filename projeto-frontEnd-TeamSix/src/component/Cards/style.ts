@@ -39,16 +39,18 @@ export const StyledLi = styled.li`
     color: #f5f5f5;
   }
 
-  a {
+  button {
     position: absolute;
     right: 5%;
     bottom: 10px;
 
     text-decoration: none;
+    border: none;
 
     font-size: 1.25rem;
     font-style: italic;
 
+    background-color: transparent;
     color: #f5f5f5;
   }
 

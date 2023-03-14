@@ -9,6 +9,7 @@ import { ProfilePage } from '../pages/Profile/ProfilePage';
 import { ProtectRoute } from '../pages/ProtectRoute/ProtectRoute';
 import { RegisterPage } from '../pages/Register/RegisterPage';
 import { DashProvider } from '../Providers/DashContext/DashContext';
+import { DiscussionProvider } from '../Providers/DiscussionContext/DIscussionContext';
 import { ProfileProvider } from '../Providers/ProfileContext/ProfileContext';
 
 export const RoutesPages = () => {
@@ -17,11 +18,16 @@ export const RoutesPages = () => {
       <Route path="/" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
       <Route path="/home" element={<ProtectRoute />}>
-        <Route index element={
-          <DashProvider>
-            <DashboardPage />
-          </DashProvider>
-        } />
+        <Route
+          index
+          element={
+            <DiscussionProvider>
+              <DashProvider>
+                <DashboardPage />
+              </DashProvider>
+            </DiscussionProvider>
+          }
+        />
         <Route
           path="/home/perfil"
           element={
@@ -31,7 +37,14 @@ export const RoutesPages = () => {
           }
         />
       </Route>
-      <Route path="home/discussion/:id:" element={<DiscussionPage />} />
+      <Route
+        path="home/discussion/:id:"
+        element={
+          <DiscussionProvider>
+            <DiscussionPage />
+          </DiscussionProvider>
+        }
+      />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

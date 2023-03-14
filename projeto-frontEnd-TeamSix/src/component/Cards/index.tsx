@@ -1,17 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+// import { Link, useNavigate } from 'react-router-dom';
+import { DiscussionContext } from '../../Providers/DiscussionContext/DIscussionContext';
 import { StyledHeaderPost, StyledImg, StyledLi } from './style';
 import { ICard } from './type';
 
-export const Card = ({ title, descrition, img }: ICard) => {
+export const Card = ({ title, descrition, img, id }: ICard) => {
+  const { getPost } = useContext(DiscussionContext)
+  // const discussion = (id)=>{
+  //   getPost(id)
+  //   navigate("home/discussion/:id:")
+  // }
   return (
-    <StyledLi>
+    <StyledLi key={id}>
       <StyledHeaderPost>
         <StyledImg $src={img} />
         <h3>{title}</h3>
       </StyledHeaderPost>
       <p>{descrition}</p>
-      <Link to="">Continuar lendo...</Link>
+      <button type='button' onClick={()=> getPost(id)} >Continuar lendo...</button>
     </StyledLi>
   );
 };

@@ -22,8 +22,8 @@ export const ProfilePage = () => {
               </div>
               {activities.map((post, index) => {
                 return (
-                  <Card
-                    key={post.id}
+                  <Card 
+                    id={index}
                     title={post.title}
                     descrition={post.description}
                     img={userForId[index]?.avatar}
