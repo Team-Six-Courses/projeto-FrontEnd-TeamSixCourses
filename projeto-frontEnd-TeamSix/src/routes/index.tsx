@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { App } from '../App';
 import { DashboardPage } from '../pages/DashboardPage/DashboardPage';
-import { DiscussionPage } from '../pages/DiscussionPage';
+import { DiscussionPage } from '../pages/DiscussionPage/DiscussionPage';
 import { LoginPage } from '../pages/Login/LoginPage';
 import { NotFoundPage } from '../pages/NotFound/NotFound404Page';
 import { ProfilePage } from '../pages/Profile/ProfilePage';
@@ -19,7 +19,7 @@ export const RoutesPages = () => {
       <Route path="/home" element={<ProtectRoute />}>
         <Route index element={
           <DashProvider>
-            <DashboardPage />
+            <DashboardPage/>
           </DashProvider>
         } />
         <Route
@@ -32,7 +32,6 @@ export const RoutesPages = () => {
         />
       </Route>
       <Route path="home/discussion/:id:" element={<DiscussionPage />} />
-
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
