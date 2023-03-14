@@ -21,25 +21,21 @@ export const RoutesPages = () => {
         <Route
           index
           element={
-<<<<<<< HEAD
-            <DashProvider>
-              <DashboardPage />
-            </DashProvider>
-=======
             <DiscussionProvider>
               <DashProvider>
                 <DashboardPage />
               </DashProvider>
             </DiscussionProvider>
->>>>>>> 3c7c885f0616d6455fab9507103594db8748a8b7
           }
         />
         <Route
           path="/home/perfil"
           element={
-            <ProfileProvider>
-              <ProfilePage />
-            </ProfileProvider>
+            <DiscussionProvider>
+              <ProfileProvider>
+                <ProfilePage />
+              </ProfileProvider>
+            </DiscussionProvider>
           }
         />
       </Route>
