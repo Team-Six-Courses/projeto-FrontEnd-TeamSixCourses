@@ -52,7 +52,7 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
     };
 
     try {
-      const response = await api.post<IPosts>('/posts', newData,{
+     await api.post<IPosts>('/posts', newData,{
         headers:{
           Authorization: `Bearer ${token}`,
         },
