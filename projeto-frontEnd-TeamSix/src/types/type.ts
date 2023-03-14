@@ -43,5 +43,7 @@ export interface IPosts {
   description: string;
   userId: number;
   filmId?: number;
-  id?: number;
+  id: number;
+  likePost?: ILikePost[];
+  comments?: IComments[];
 }
