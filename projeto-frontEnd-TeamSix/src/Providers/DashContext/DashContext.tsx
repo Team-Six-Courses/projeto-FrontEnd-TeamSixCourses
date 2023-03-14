@@ -58,7 +58,6 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
         },
       });
       getPosts()
-      
     } catch (error) {
       console.error(error);
     }
