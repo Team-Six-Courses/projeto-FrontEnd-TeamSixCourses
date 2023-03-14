@@ -3,6 +3,7 @@ import { IHeaderProps, StyledHeader } from './style';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import imgPerfil from '../../assets/userProfileimg.svg'
 import { ModalAvatar } from '../ModalAvatar';
 
 const Header = ({ background }: IHeaderProps) => {
@@ -20,7 +21,7 @@ const Header = ({ background }: IHeaderProps) => {
       {token ? (
         <div onClick={() => setModalProfile(!modalProfile)}>
           <figure>
-            <img src="AVATAR" alt="AVATARPROFILE" />
+            <img src={imgPerfil} alt="AVATARPROFILE" />
           </figure>
           {!modalProfile ? (
             <MdOutlineKeyboardArrowDown />

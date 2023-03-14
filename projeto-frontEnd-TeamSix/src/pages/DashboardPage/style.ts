@@ -155,7 +155,6 @@ export const DashStyle = styled.div`
   }
   main {
     width: 100%;
-    height: 800px;
 
     background-image: url(${bgDash2});
     background-repeat: no-repeat;
@@ -193,7 +192,7 @@ export const FormStyled = styled.form`
   width: 750px;
   height: 360px;
   padding: 20px;
-
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -241,6 +240,7 @@ export const FormStyled = styled.form`
     outline: none;
   }
 `;
+
 export const ListStyled = styled.ul`
   li {
     width: 750px;

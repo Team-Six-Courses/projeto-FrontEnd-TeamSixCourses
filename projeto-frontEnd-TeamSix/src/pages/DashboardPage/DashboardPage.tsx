@@ -1,7 +1,7 @@
 import { InputDash } from '../DashboardPage/InputDash';
 import { DashText } from '../DashboardPage/DashText';
 import { DashStyle, FormStyled, ListStyled } from './style';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import Header from '../../component/Header';
 import { useContext } from 'react';
 import { DashContext } from '../../Providers/DashContext/DashContext';
@@ -14,13 +14,25 @@ interface IDashForm {
 }
 
 export const DashboardPage = () => {
-  const { film, posts } = useContext(DashContext);
+  const { film, posts, addPost } = useContext(DashContext);
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<IDashForm>();
+  } = useForm<IDashForm>({
+      mode: "onBlur",
+      defaultValues: {
+        title: '',
+        description: '', 
+      } 
+    });
+
+  const submit: SubmitHandler<IDashForm> = (formData) => {
+    addPost(formData);
+    reset();
+  }
 
   return (
     <DashStyle>
@@ -67,7 +79,7 @@ export const DashboardPage = () => {
       <main>
         <div className="filter_bgmain">
           <div className="box_main_content">
-            <FormStyled onSubmit={handleSubmit(() => {})}>
+            <FormStyled onSubmit={handleSubmit(submit)}>
               <div className="user_title">
                 <img src="../../assets/userImg.svg" />
                 <InputDash
