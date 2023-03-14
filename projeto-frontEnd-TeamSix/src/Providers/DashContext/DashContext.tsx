@@ -14,7 +14,6 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
   const getFilm = async () => {
     try {
       const response = await api<IFilm>('/films/1');
-      console.log(response.data)
       setFilm(response.data);
     } catch (error) {
       console.error;
@@ -29,14 +28,13 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
   const getPosts = async () => {
     try {
       const response = await api.get<IDashPosts[]>(
-        '/posts?filmsId=1&_expand=user&_embed=likePost',
+        '/posts?filmsId=1&_expands=user&_embed=likePost',
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log(response.data)
       setPosts(response.data);
     } catch (error) {
       console.error(error);
@@ -44,15 +42,22 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
   };
 
   const addPost = async (data: IPosts) => {
+    const id = localStorage.getItem('@USERID')
+    
     const newData = {
       title: data.title,
-      discription: data.description,
-      userId: data.userId,
+      description: data.description,
+      userId: id,
       filmId: data.filmId,
     };
 
     try {
-      const response = await api.post<IPosts>('/posts', newData);
+     await api.post<IPosts>('/posts', newData,{
+        headers:{
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      getPosts()
     } catch (error) {
       console.error(error);
     }

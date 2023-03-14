@@ -19,7 +19,7 @@ export const RoutesPages = () => {
       <Route path="/home" element={<ProtectRoute />}>
         <Route index element={
           <DashProvider>
-            <DashboardPage />
+            <DashboardPage/>
           </DashProvider>
         } />
         <Route
@@ -32,7 +32,6 @@ export const RoutesPages = () => {
         />
       </Route>
       <Route path="home/discussion/:id:" element={<DiscussionPage />} />
-
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
