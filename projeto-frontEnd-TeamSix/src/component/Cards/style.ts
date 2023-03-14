@@ -50,6 +50,10 @@ export const StyledLi = styled.li`
     font-style: italic;
 
     color: #f5f5f5;
+    cursor: pointer;
+    :hover{
+      color: #FF7D04;
+    }
   }
 
   @media (max-width: 769px) {
