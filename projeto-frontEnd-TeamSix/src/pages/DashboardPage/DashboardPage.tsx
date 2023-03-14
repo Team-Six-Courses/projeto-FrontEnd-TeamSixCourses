@@ -42,23 +42,26 @@ export const DashboardPage = () => {
     reset();
   };
 
-  const getUserForId = async (id: number) => {
+  const getUserForId = async (id: number, newPost: IUser[]) => {
     try {
       const response = await api.get<IUser>(`/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUserForId([...userForId, response.data]);
+       newPost.push(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
   const addUserForId = () => {
-    return posts.map((post) => {
-      getUserForId(post.userId);
+    let newPost: IUser[] = []
+    posts.forEach((post) => {
+      getUserForId(post.userId, newPost);
     });
+    setUserForId(newPost)
+    return newPost
   };
 
   const getUser = async () => {
@@ -150,13 +153,16 @@ export const DashboardPage = () => {
 
             <ListStyled>
               {posts.map((post,index) => { 
+                // console.log(userForId[0]?.avatar)
                 return (
                   <Card
                     id={post.id}
                     key={post.id}
                     title={post.title}
                     descrition={post.description}
-                    img={userForId[post.id]?.avatar}
+                    img={userForId.find((element)=>{
+                      element.id === post.userId 
+                    })?.avatar }
                   />
                 );
               })}

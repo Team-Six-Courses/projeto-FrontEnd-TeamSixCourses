@@ -24,8 +24,8 @@ export const Card = ({ title, descrition, img, id }: ICard) => {
       <button
         type="button"
         onClick={() => {
-          getPost(id, img);
-          navigate('/home/discussion/:id:');
+          // getPost(id, img);
+          navigate(`/home/discussion/${id}`);
         }}
       >
         Continuar lendo...

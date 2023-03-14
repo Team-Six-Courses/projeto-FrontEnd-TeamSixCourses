@@ -3,22 +3,29 @@ import { StyleMainDisc } from './style';
 import userImg from '../../assets/userProfileimg.svg';
 import likeSVG from '../../assets/like.svg';
 import Nolike from '../../assets/no-like.svg';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'
 import { Img } from '../../component/ImgProfile/index';
 import { DiscussionContext } from '../../Providers/DiscussionContext/DIscussionContext';
 import { CommentsPosts } from '../../component/CommentPost';
 
 export const DiscussionPage = () => {
-  const { post, imgPost } = useContext(DiscussionContext);
+  const { post, imgPost, getPost } = useContext(DiscussionContext);
   const [like, setLike] = useState(false);
   const [count, setCount] = useState(2);
+  const { id } = useParams()
 
+  console.log(post)
   const add = () => {
     setCount(count + 1);
   };
   const sub = () => {
     setCount(count - 1);
   };
+
+  useEffect(() => {
+    getPost(Number(id));
+  }, [])
 
   return (
     <div>
