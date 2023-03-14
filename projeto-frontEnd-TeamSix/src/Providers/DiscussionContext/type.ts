@@ -7,6 +7,6 @@ export interface IDiscussionProviderProps {
 export interface IDiscussionProvider {
   post: IPosts;
   setPost: React.Dispatch<React.SetStateAction<IPosts>>;
-  getPost: (id: number, img: string) => Promise<void>;
+  getPost: (id: number, img?: string) => Promise<void>;
   imgPost: string | undefined;
 }

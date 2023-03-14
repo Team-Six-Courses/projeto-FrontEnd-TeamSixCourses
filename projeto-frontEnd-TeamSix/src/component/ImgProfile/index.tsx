@@ -3,7 +3,7 @@ import { HTMLAttributes } from 'react';
 import { StyledImgC } from './styled';
 
 interface IImgProprs {
-  src: string | undefined;
+  src?: string | undefined;
 }
 
 export const Img = ({ src }: IImgProprs) => {

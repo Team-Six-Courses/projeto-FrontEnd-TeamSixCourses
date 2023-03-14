@@ -15,6 +15,7 @@ interface IDashForm {
   title: string;
   description: string;
   userId: number;
+  id: number;
 }
 
 export const DashboardPage = () => {
