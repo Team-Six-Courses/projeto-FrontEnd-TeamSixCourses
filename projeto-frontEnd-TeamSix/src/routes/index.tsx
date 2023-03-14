@@ -17,11 +17,14 @@ export const RoutesPages = () => {
       <Route path="/" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
       <Route path="/home" element={<ProtectRoute />}>
-        <Route index element={
-          <DashProvider>
-            <DashboardPage/>
-          </DashProvider>
-        } />
+        <Route
+          index
+          element={
+            <DashProvider>
+              <DashboardPage />
+            </DashProvider>
+          }
+        />
         <Route
           path="/home/perfil"
           element={

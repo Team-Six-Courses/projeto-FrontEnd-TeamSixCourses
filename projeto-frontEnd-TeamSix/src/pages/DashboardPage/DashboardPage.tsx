@@ -9,6 +9,7 @@ import { Card } from '../../component/Cards';
 import { IPosts, IUser } from '../../types/type';
 import { api } from '../../API';
 import { IDashPosts } from '../../Providers/DashContext/type';
+import { Img } from '../../component/ImgProfile';
 
 interface IDashForm {
   title: string;
@@ -18,6 +19,7 @@ interface IDashForm {
 
 export const DashboardPage = () => {
   const { film, posts, addPost } = useContext(DashContext);
+  const [user, setUser] = useState<IUser>({} as IUser);
   const [userForId, setUserForId] = useState<IUser[]>([] as IUser[]);
   const token = localStorage.getItem('@TOKEN');
 
@@ -58,8 +60,24 @@ export const DashboardPage = () => {
     });
   };
 
+  const getUser = async () => {
+    const id = Number(localStorage.getItem('@USERID'));
+    try {
+      const response = await api.get<IUser>(`users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setUser(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     addUserForId();
+    getUser();
   }, []);
 
   return (
@@ -109,7 +127,7 @@ export const DashboardPage = () => {
           <div className="box_main_content">
             <FormStyled onSubmit={handleSubmit(submit)}>
               <div className="user_title">
-                <img src="../../assets/userImg.svg" />
+                <Img src={user.avatar} />
                 <InputDash
                   placeholder="O que você está pensando?"
                   type="text"

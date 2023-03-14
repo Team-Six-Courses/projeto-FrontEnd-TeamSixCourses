@@ -20,9 +20,8 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
   const [activities, setActivities] = useState<IPosts[]>([] as IPosts[]);
   const [userForId, setUserForId] = useState<IUser[]>([] as IUser[]);
 
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbmljaXVzQG1haWwuY29tIiwiaWF0IjoxNjc4NzUzOTI2LCJleHAiOjE2Nzg3NTc1MjYsInN1YiI6IjEifQ.9xqS_xVVwEWyLAxMls8rrBfkbrhzEL0DF2kE-4WjW-w'; // localStorage.getItem('@TOKEN');
-  const id = 1; // localStorage.getItem("@ID")
+  const token = localStorage.getItem('@TOKEN');
+  const id = Number(localStorage.getItem('@USERID'));
 
   const getUser = async () => {
     try {
