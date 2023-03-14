@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Card } from '../../component/Cards';
-import  Header  from '../../component/Header';
+import Header from '../../component/Header';
 import { InformationProfile } from '../../component/InformationsProfile';
 import { ProfileContext } from '../../Providers/ProfileContext/ProfileContext';
 import { StyleBackgroundImage, StyledMain, StyledUl } from './styled';
@@ -8,12 +8,10 @@ import { StyleBackgroundImage, StyledMain, StyledUl } from './styled';
 export const ProfilePage = () => {
   const { activities, userForId } = useContext(ProfileContext);
 
- 
-
   return (
     <>
       <StyleBackgroundImage>
-       <Header background='rgba(26, 26, 26, 1)'/>
+        <Header background="rgba(26, 26, 26, 1)" />
         <StyledMain>
           <section className="accontActivities">
             <StyledUl>
@@ -24,6 +22,7 @@ export const ProfilePage = () => {
                 return (
                   <Card
                     key={post.id}
+                    id={post.id}
                     title={post.title}
                     descrition={post.description}
                     img={userForId[index]?.avatar}

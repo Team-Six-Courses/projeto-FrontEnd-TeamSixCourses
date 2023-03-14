@@ -1,24 +1,45 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../../API';
 import { IPosts } from '../../types/type';
+import { IDiscussionProvider, IDiscussionProviderProps } from './type';
 
-const DiscussionContext = createContext({});
-/* 
-const DiscussionProvider = () => {
-  const [ṕost, setPost] = useContext<IPosts>({} as IPosts);
+export const DiscussionContext = createContext<IDiscussionProvider>(
+  {} as IDiscussionProvider
+);
+
+export const DiscussionProvider = ({ children }: IDiscussionProviderProps) => {
+  const [post, setPost] = useState<IPosts>({} as IPosts);
+  const [imgPost, setImgPost] = useState<string | undefined>('' as string);
+  const [postId, setPostId] = useState<number>(0);
+
   const token = localStorage.getItem('@TOKEN');
 
-  const GetPost = async () => {
+  const getPost = async (id: number, img?: string | undefined) => {
+    setPostId(id);
     try {
-      const response = await api.get<IPosts>('', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await api.get<IPosts>(
+        `/posts/1?_embed=comments&_embed=likePost`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setImgPost(img);
+      setPost(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
-  return <DiscussionContext.Provider value={}></DiscussionContext.Provider>;
-}; */
+  useEffect(() => {
+    getPost(postId);
+  }, []);
+
+  return (
+    <DiscussionContext.Provider value={{ post, setPost, getPost, imgPost }}>
+      {children}
+    </DiscussionContext.Provider>
+  );
+};

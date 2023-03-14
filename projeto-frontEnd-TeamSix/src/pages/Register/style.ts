@@ -4,14 +4,14 @@ import img from '../../assets/BGRegister.svg';
 export const StyledMainRegister = styled.main`
   display: flex;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   background: url(${img});
   background-repeat: no-repeat;
   background-origin: content-box;
   background-attachment: fixed;
-  background-position: top;
+  background-position: center;
   background-size: cover;
   flex-direction: column;
   gap: 50px;
@@ -27,6 +27,14 @@ export const StyledFormRegister = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
+
+  @media (max-width: 769px ) {
+    min-width: 360px;
+  }
+
+  @media (max-width: 420px ) {
+    min-width: 250px;
+  }
 
   h2 {
     font-family: 'Inter';

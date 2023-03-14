@@ -29,7 +29,7 @@ export const StyledLi = styled.li`
     overflow: hidden;
     display: -webkit-box;
     line-height: 150%;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 
     width: 95%;
@@ -39,17 +39,23 @@ export const StyledLi = styled.li`
     color: #f5f5f5;
   }
 
-  a {
+  button {
     position: absolute;
     right: 5%;
     bottom: 10px;
 
     text-decoration: none;
+    border: none;
 
     font-size: 1.25rem;
     font-style: italic;
 
+    background-color: transparent;
     color: #f5f5f5;
+    cursor: pointer;
+    :hover{
+      color: #FF7D04;
+    }
   }
 
   @media (max-width: 769px) {
@@ -77,7 +83,7 @@ export const StyledHeaderPost = styled.div`
     font-size: 1.75rem;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
-
+    text-align: left;
     color: #f5f5f5;
   }
 

@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { StyledFormLogin, StyledMainLogin } from './style';
 import { SchemaLogin } from './schema';
 import { Button } from '../../component/Button';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { UserContext } from '../../Providers/userContext/userContext';
 
 interface Iform {
@@ -18,7 +18,10 @@ interface Iform {
 }
 
 export const LoginPage = () => {
-  const { loading, loginUser} = useContext(UserContext)
+  const { loading, loginUser } = useContext(UserContext)
+
+  const token = localStorage.getItem("@TOKEN")
+
 
   const { register, handleSubmit, formState: { errors }
   } = useForm<Iform>({
@@ -30,13 +33,17 @@ export const LoginPage = () => {
     loginUser(form)
   }
 
+  if (token){
+   return <Navigate to="/home"/> 
+  }
+
   return (
     <StyledMainLogin>
       <StyledFormLogin onSubmit={handleSubmit(submit)}>
         <h2>Login</h2>
         <Input type='email' label='email' placeholder='Digite seu email' register={register('email')} error={errors.email} />
         <Input type='password' label='senha' placeholder='Digite sua senha' register={register('password')} error={errors.password} />
-        <Button type='submit' name='Login'></Button>
+        <Button type='submit' name='Login' $background='rgba(255, 255, 255, 0.85)' $color='#000000'></Button>
         <p>Não possui uma conta?</p>
         <Link to='/cadastro'>Cadastrar</Link>
       </StyledFormLogin>

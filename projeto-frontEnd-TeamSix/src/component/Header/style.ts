@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export interface IHeaderProps{
-    background: string
+export interface IHeaderProps {
+  background: string;
 }
 
 export const StyledHeader = styled.header<IHeaderProps>`
   height: 100px;
   width: 100vw;
-  background: ${props=>props.background};
+  background: ${(props) => props.background};
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
@@ -15,17 +15,30 @@ export const StyledHeader = styled.header<IHeaderProps>`
   position: fixed;
   top: 0;
 
+  z-index: 1;
+
+  @media (max-width: 420px) {
+    figure {
+      display: none;
+    }
+  }
+
   div:nth-child(1) {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 80px;
+    cursor: pointer;
+
+    @media (max-width: 420px) {
+      margin-left: 20px;
+    }
 
     h1 {
       font-family: 'Inter';
       font-style: normal;
       font-weight: 700;
-      font-size: 34px;
+      font-size: 32px;
       line-height: 34px;
       color: #ffffff;
     }
@@ -34,7 +47,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
       font-family: 'Russo One';
       font-style: normal;
       font-weight: 700;
-      font-size: 26px;
+      font-size: 20px;
       line-height: 34px;
       color: #ff7d04;
     }
@@ -47,6 +60,10 @@ export const StyledHeader = styled.header<IHeaderProps>`
     margin-right: 80px;
     cursor: pointer;
 
+    @media (max-width: 420px) {
+      margin-right: 20px;
+    }
+
     figure {
       border-radius: 100%;
       background-color: #ffffff;
@@ -56,6 +73,10 @@ export const StyledHeader = styled.header<IHeaderProps>`
       img {
         width: 100%;
         height: 100%;
+        transition: all 0.2s ease-in-out;
+        :hover {
+          transform: scale(1.1);
+        }
       }
     }
 
@@ -90,6 +111,14 @@ export const StyledHeader = styled.header<IHeaderProps>`
 
     p:nth-child(2) {
       border-bottom: #ffffff 1px solid;
+    }
+
+    @media (max-width: 420px) {
+      width: 100%;
+      right: 0px;
+      p {
+        text-align: center;
+      }
     }
   }
 `;

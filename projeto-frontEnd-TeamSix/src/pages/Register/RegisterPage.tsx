@@ -5,11 +5,7 @@ import { Input } from '../../component/Input';
 import { Link } from 'react-router-dom';
 import { StyledFormRegister, StyledMainRegister } from './style';
 import { SchemaRegister } from './schema';
-<<<<<<< HEAD
-import { Header } from '../../component/Header';
-=======
 import { IRegisterUser, UserContext } from '../../Providers/userContext/userContext';
->>>>>>> f032629437d5aa40fd9d0c8b2fe2d6c6d661762a
 
 
 interface Iform {
@@ -36,12 +32,7 @@ export const RegisterPage = () => {
 
   return (
     <StyledMainRegister>
-<<<<<<< HEAD
-      <Header background='rgba(116, 158, 169, 0.38)'/>
-      <StyledFormRegister>
-=======
       <StyledFormRegister onSubmit={handleSubmit(submit)}>
->>>>>>> f032629437d5aa40fd9d0c8b2fe2d6c6d661762a
         <h2>Cadastre-se</h2>
         <Input type='text' label='nome' placeholder='Digite seu nome' register={register('name')} error={errors.name} />
         <Input type='email' label='email' placeholder='Digite seu email' register={register('email')} error={errors.email} />

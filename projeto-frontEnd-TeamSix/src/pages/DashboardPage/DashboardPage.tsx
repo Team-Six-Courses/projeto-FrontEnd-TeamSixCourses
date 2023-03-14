@@ -1,8 +1,15 @@
 import { InputDash } from '../DashboardPage/InputDash';
 import { DashText } from '../DashboardPage/DashText';
 import { DashStyle, FormStyled, ListStyled } from './style';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import Header from '../../component/Header';
+import { useContext, useEffect, useState } from 'react';
+import { DashContext } from '../../Providers/DashContext/DashContext';
+import { Card } from '../../component/Cards';
+import { IPosts, IUser } from '../../types/type';
+import { api } from '../../API';
+import { IDashPosts } from '../../Providers/DashContext/type';
+import { Img } from '../../component/ImgProfile';
 
 interface IDashForm {
   title: string;
@@ -11,73 +18,102 @@ interface IDashForm {
 }
 
 export const DashboardPage = () => {
+  const { film, posts, addPost } = useContext(DashContext);
+  const [user, setUser] = useState<IUser>({} as IUser);
+  const [userForId, setUserForId] = useState<IUser[]>([] as IUser[]);
+  const token = localStorage.getItem('@TOKEN');
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<IDashForm>();
+  } = useForm<IDashForm>({
+    mode: 'onBlur',
+    defaultValues: {
+      title: '',
+      description: '',
+    },
+  });
+
+  const submit: SubmitHandler<IDashForm> = (formData) => {
+    addPost(formData);
+    reset();
+  };
+
+  const getUserForId = async (id: number) => {
+    try {
+      const response = await api.get<IUser>(`/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserForId([...userForId, response.data]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addUserForId = () => {
+    return posts.map((post) => {
+      getUserForId(post.userId);
+    });
+  };
+
+  const getUser = async () => {
+    const id = Number(localStorage.getItem('@USERID'));
+    try {
+      const response = await api.get<IUser>(`users/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(response.data);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  useEffect(() => {
+    addUserForId();
+  }, [user]);
 
   return (
-           <DashStyle>
-            <Header background='rgba(3, 37, 65, 1)'/>
-            <section>
-              <div className='filter_bg'>
-              <div className='box_section_content'>
-                <img />
-                <div className='box_infos'>
-
-                  <div className='box_infos_title'>
-                  <h2>Interestelar</h2>
-                  <p>(2014)</p>
-                  </div>
-
-                  <div className='box_infos_tags'>
-                    <span>10</span>
-                    <p>06/11/2014 (BR)</p>
-                    <p className='circle'/>
-                    <p>Aventura, Drama, Ficção cientifica</p>
-                    <p className='circle'/>
-                    <p>2h 49m</p>
-                  </div>
-                  
-                  <strong>Reproduzir trailer</strong>
-
-                  <div className='box_infos_sinopse'>
-                    <h3>Sinopse</h3>
-                    <p>As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para receberem a população mundial, possibilitando a continuação da espécie. Cooper é chamado para liderar o grupo e aceita a missão sabendo que pode nunca mais ver os filhos. Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um novo lar.</p> 
-                  </div>
-
-                  <div className='director'>
-                    <p>Christopher Nolan</p>
-                    <span>Diretor</span>
-                  </div>
+    <DashStyle>
+      <Header background="rgba(3,35,65,1)" />
+      <section className="section-one">
+        <div className="filter_bg">
+          <div className="box_section_content">
+            <img />
+            <div className="box_infos">
+              <div className="box_infos_title">
+                <h2>{film.title}</h2>
+                <p>({film.year})</p>
+              </div>
 
               <div className="box_infos_tags">
-                <span>10</span>
-                <p>06/11/2014 (BR)</p>
+                <span>{film.classification}</span>
+                <p>{film.data} (BR)</p>
                 <p className="circle" />
-                <p>Aventura, Drama, Ficção cientifica</p>
+                <p>{film.classification}</p>
                 <p className="circle" />
-                <p>2h 49m</p>
+                <p>{film.duration}</p>
               </div>
 
               <strong>Reproduzir trailer</strong>
 
               <div className="box_infos_sinopse">
                 <h3>Sinopse</h3>
-                <p>
-                  As reservas naturais da Terra estão chegando ao fim e um grupo
-                  de astronautas recebe a missão de verificar possíveis planetas
-                  para receberem a população mundial, possibilitando a
-                  continuação da espécie. Cooper é chamado para liderar o grupo
-                  e aceita a missão sabendo que pode nunca mais ver os filhos.
-                  Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um
-                  novo lar.
-                </p>
+                <p>{film.synoyisis}</p>
               </div>
 
               <div className="director">
-                <p>Christopher Nolan</p>
+                <p>{film.director}</p>
                 <span>Diretor</span>
               </div>
             </div>
@@ -92,9 +128,9 @@ export const DashboardPage = () => {
       <main>
         <div className="filter_bgmain">
           <div className="box_main_content">
-            <FormStyled onSubmit={handleSubmit(() => {})}>
+            <FormStyled onSubmit={handleSubmit(submit)}>
               <div className="user_title">
-                <img src="../../assets/userImg.svg" />
+                <Img src={user.avatar} />
                 <InputDash
                   placeholder="O que você está pensando?"
                   type="text"
@@ -111,7 +147,19 @@ export const DashboardPage = () => {
               </div>
             </FormStyled>
 
-            <ListStyled></ListStyled>
+            <ListStyled>
+              {posts.map((post,index) => { 
+                return (
+                  <Card
+                    id={post.id}
+                    key={post.id}
+                    title={post.title}
+                    descrition={post.description}
+                    img={userForId[post.id]?.avatar}
+                  />
+                );
+              })}
+            </ListStyled>
           </div>
         </div>
       </main>

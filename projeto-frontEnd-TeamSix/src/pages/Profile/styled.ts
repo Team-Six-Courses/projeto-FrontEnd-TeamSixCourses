@@ -15,12 +15,11 @@ export const StyledMain = styled.main`
   justify-content: space-between;
   width: 100%;
   height: 100vh;
-
   background: rgba(111, 98, 98, 0.6);
+  margin-top: 100px;
 
   .accontActivities {
     width: 60%;
-
     margin-left: 3%;
     margin-top: 5%;
   }
@@ -47,8 +46,6 @@ export const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  overflow-y: scroll;
 
   border-radius: 5px;
 

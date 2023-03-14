@@ -2,6 +2,7 @@ import { ILikePost, IPosts, IUser } from '../../types/type';
 
 export interface IDashProviderProps {
   children: React.ReactNode;
+  
 }
 
 export interface IDashPosts {
