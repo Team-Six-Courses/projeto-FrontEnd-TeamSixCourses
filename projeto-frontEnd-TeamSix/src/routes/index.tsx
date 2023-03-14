@@ -31,9 +31,11 @@ export const RoutesPages = () => {
         <Route
           path="/home/perfil"
           element={
-            <ProfileProvider>
-              <ProfilePage />
-            </ProfileProvider>
+            <DiscussionProvider>
+              <ProfileProvider>
+                <ProfilePage />
+              </ProfileProvider>
+            </DiscussionProvider>
           }
         />
       </Route>

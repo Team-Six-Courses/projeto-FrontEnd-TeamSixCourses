@@ -148,10 +148,10 @@ export const DashboardPage = () => {
             </FormStyled>
 
             <ListStyled>
-              {posts.map((post,index) => {
-                
+              {posts.map((post,index) => { 
                 return (
-                  <Card id= {post.id}
+                  <Card
+                    id={post.id}
                     key={post.id}
                     title={post.title}
                     descrition={post.description}

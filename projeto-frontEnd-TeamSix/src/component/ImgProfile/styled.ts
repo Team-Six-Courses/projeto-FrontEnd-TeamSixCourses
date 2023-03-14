@@ -1,18 +1,17 @@
 import styled from 'styled-components';
 
 export const StyledImgC = styled.figure`
-        width: 85px;
-        height: 85px;
-        display: flex;
-        border-radius: 50%;
+  width: 71px;
+  height: 71px;
+  display: flex;
+  border-radius: 50%;
 
   img {
-    width: 87px;
-    height: 87px;
+    width: 71px;
+    height: 71px;
 
     cursor: pointer;
 
     border-radius: 50%;
-
   }
 `;

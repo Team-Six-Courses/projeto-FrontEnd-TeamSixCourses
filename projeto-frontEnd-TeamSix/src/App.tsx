@@ -20,8 +20,6 @@ export const App = () => {
         pauseOnHover
         theme="light"
       />
-      {/* <Navigate to="/login" /> */}
-
     </div>
   );
 };

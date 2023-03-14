@@ -4,32 +4,41 @@ import { api } from '../../API';
 import { IPosts } from '../../types/type';
 import { IDiscussionProvider, IDiscussionProviderProps } from './type';
 
-export const DiscussionContext = createContext<IDiscussionProvider>({} as IDiscussionProvider);
+export const DiscussionContext = createContext<IDiscussionProvider>(
+  {} as IDiscussionProvider
+);
 
-export const DiscussionProvider = ({children}: IDiscussionProviderProps) => {
+export const DiscussionProvider = ({ children }: IDiscussionProviderProps) => {
   const [post, setPost] = useState<IPosts>({} as IPosts);
-  const token = localStorage.getItem('@TOKEN');
-  const navigate = useNavigate()
+  const [imgPost, setImgPost] = useState<string | undefined>('' as string);
+  const [postId, setPostId] = useState<number>(0);
 
-  const getPost = async (id:number) => {
+  const token = localStorage.getItem('@TOKEN');
+
+  const getPost = async (id: number, img?: string | undefined) => {
+    setPostId(id);
     try {
-      const response = await api.get<IPosts>(`/posts/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response.data)
-      setPost(response.data)
-      navigate("/home/discussion/:id:")
+      const response = await api.get<IPosts>(
+        `/posts/1?_embed=comments&_embed=likePost`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setImgPost(img);
+      setPost(response.data);
     } catch (error) {
       console.error(error);
     }
   };
-// useEffect(()=>{
-//   getPost()
-// },[])
+
+  useEffect(() => {
+    getPost(postId);
+  }, []);
+
   return (
-    <DiscussionContext.Provider value={{post, setPost, getPost}}>
+    <DiscussionContext.Provider value={{ post, setPost, getPost, imgPost }}>
       {children}
     </DiscussionContext.Provider>
   );
