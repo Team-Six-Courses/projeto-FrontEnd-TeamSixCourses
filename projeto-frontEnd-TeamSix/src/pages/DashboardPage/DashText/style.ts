@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyleText = styled.textarea`
   max-width: 90%;
   width: 650px;
-  min-width: 300px;
   max-height: 200px;
   height: 150px;
   display: flex;
@@ -19,6 +18,8 @@ export const StyleText = styled.textarea`
   font-size: 14px;
   line-height: 17px;
   color: #828282;
+  resize: none;
+  padding: 10px;
 
   :hover {
     box-shadow: 0px 0px 25px #01b4e4;
