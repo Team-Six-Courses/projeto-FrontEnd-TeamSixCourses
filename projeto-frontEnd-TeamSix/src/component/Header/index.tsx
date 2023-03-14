@@ -26,7 +26,7 @@ const Header = ({ background }: IHeaderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      
       setUser(response.data);
     } catch (error) {
       console.error(error);

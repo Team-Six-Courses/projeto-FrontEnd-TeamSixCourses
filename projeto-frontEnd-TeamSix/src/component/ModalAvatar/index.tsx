@@ -23,7 +23,7 @@ export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
 
   const navigate = useNavigate();
 
-  const getAvatars = async () => {
+   const getAvatars = async () => {
     try {
       const response = await api.get<IAvatars[]>('/avatars');
 
@@ -33,27 +33,47 @@ export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
     }
   };
 
-  useEffect(() => {
-    const editAvatar = async (avatarString: string) => {
-      const token = localStorage.getItem('@TOKEN');
-      const id = Number(localStorage.getItem('@USERID'));
+  const editAvatar = async (avatarString: string) => {
+    const token = localStorage.getItem('@TOKEN');
+    const id = Number(localStorage.getItem('@USERID'));
 
-      const request = {
-        avatar: avatarString,
-      };
-
-      try {
-        await api.patch<IUser>(`/users/1`, request, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-      } catch (error) {
-        console.error(error);
-      }
+    const request = {
+      avatar: avatarString,
     };
+
+    try {
+      const response = await api.patch<IUser>(`/users/${id}`, request, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setAvatarSelect(response.data.avatar)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    // const editAvatar = async (avatarString: string) => {
+    //   const token = localStorage.getItem('@TOKEN');
+    //   const id = Number(localStorage.getItem('@USERID'));
+
+    //   const request = {
+    //     avatar: avatarString,
+    //   };
+
+    //   try {
+    //     await api.patch<IUser>(`/users/${id}`, request, {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     });
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
     editAvatar(avatarSelect);
-  }, [avatarSelect]);
+  }, []);
 
   useEffect(() => {
     getAvatars();
@@ -69,7 +89,7 @@ export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
               <li key={avatarAPI.id}>
                 <button
                   onClick={() => {
-                    setAvatarSelect(avatarAPI.avatar);
+                    editAvatar(avatarAPI.avatar);
                   }}
                 >
                   <Img src={avatarAPI.avatar} />
