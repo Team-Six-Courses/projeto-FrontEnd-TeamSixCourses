@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyleText = styled.textarea`
   max-width: 90%;
   width: 650px;
-  min-width: 300px;
   max-height: 200px;
   height: 150px;
   display: flex;

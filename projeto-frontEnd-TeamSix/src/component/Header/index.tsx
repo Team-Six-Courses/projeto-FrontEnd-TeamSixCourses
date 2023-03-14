@@ -14,7 +14,7 @@ const Header = ({ background }: IHeaderProps) => {
 
   return (
     <StyledHeader background={background}>
-      <div>
+      <div onClick={() => navigate('/home')}>
         <h1>TEAM SIX</h1>
         <small>Films</small>
       </div>

@@ -17,11 +17,22 @@ export const StyledHeader = styled.header<IHeaderProps>`
 
   z-index: 1;
 
+  @media (max-width: 420px) {
+    figure {
+      display: none;
+    }
+  }
+
   div:nth-child(1) {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 80px;
+    cursor: pointer;
+
+    @media (max-width: 420px) {
+      margin-left: 20px;
+    }
 
     h1 {
       font-family: 'Inter';
@@ -49,6 +60,10 @@ export const StyledHeader = styled.header<IHeaderProps>`
     margin-right: 80px;
     cursor: pointer;
 
+    @media (max-width: 420px) {
+      margin-right: 20px;
+    }
+
     figure {
       border-radius: 100%;
       background-color: #ffffff;
@@ -58,7 +73,7 @@ export const StyledHeader = styled.header<IHeaderProps>`
       img {
         width: 100%;
         height: 100%;
-        transition: all .2s ease-in-out;
+        transition: all 0.2s ease-in-out;
         :hover {
           transform: scale(1.1);
         }
@@ -96,6 +111,14 @@ export const StyledHeader = styled.header<IHeaderProps>`
 
     p:nth-child(2) {
       border-bottom: #ffffff 1px solid;
+    }
+
+    @media (max-width: 420px) {
+      width: 100%;
+      right: 0px;
+      p {
+        text-align: center;
+      }
     }
   }
 `;

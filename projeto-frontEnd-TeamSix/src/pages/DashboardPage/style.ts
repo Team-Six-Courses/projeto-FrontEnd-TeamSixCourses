@@ -40,7 +40,13 @@ export const DashStyle = styled.div`
     gap: 70px;
 
     border: none;
+
+    @media (max-width: 750px) {
+      flex-direction: column;
+      gap: 30px;
+    }
   }
+
   .box_section_content > img {
     width: 351px;
     height: 536px;
@@ -51,7 +57,15 @@ export const DashStyle = styled.div`
     background-image: url(${cover});
     background-repeat: no-repeat;
     background-position: center;
+
+    @media (max-width: 440px) {
+      width: 80%;
+      min-height: 350px;
+      background-position: top;
+      margin-top: 161px;
+    }
   }
+
   .box_infos {
     width: 750px;
     height: 350px;
@@ -60,6 +74,14 @@ export const DashStyle = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+
+    @media (max-width: 750px) {
+      width: 80%;
+    }
+
+    @media (max-width: 450px) {
+      margin-bottom: 161px;
+    }
   }
   .box_infos_title {
     display: flex;
@@ -120,6 +142,15 @@ export const DashStyle = styled.div`
     line-height: 18px;
     letter-spacing: 0em;
     text-align: justify;
+
+    @media (max-width: 420px) {
+      display: -webkit-box;
+      line-height: 150%;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
   }
   .director > p {
     font-size: 16px;
@@ -152,6 +183,11 @@ export const DashStyle = styled.div`
     font-weight: bold;
     font-size: 40px;
     color: black;
+
+    @media (max-width: 750px) {
+      text-align: center;
+      font-size: 30px;
+    }
   }
   main {
     width: 100%;
@@ -203,6 +239,11 @@ export const FormStyled = styled.form`
 
   background: rgba(0, 0, 0, 0.6);
 
+  @media (max-width: 750px) {
+    width: 80%;
+    margin: 50px auto;
+  }
+
   .user_title {
     width: 100%;
 
@@ -245,5 +286,10 @@ export const ListStyled = styled.ul`
   li {
     width: 750px;
     margin-bottom: 20px;
+
+    @media (max-width: 750px) {
+      width: 80%;
+      margin: 20px auto;
+    }
   }
 `;
