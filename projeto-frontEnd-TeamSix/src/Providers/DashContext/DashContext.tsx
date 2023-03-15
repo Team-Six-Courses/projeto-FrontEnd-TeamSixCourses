@@ -1,13 +1,12 @@
 import { createContext, useEffect, useState } from 'react';
 import { api } from '../../API';
-import { IComments, IPosts } from '../../types/type';
+import { IPosts } from '../../types/type';
 import { IDashPosts, IDashProvider, IDashProviderProps, IFilm } from './type';
 
 export const DashContext = createContext<IDashProvider>({} as IDashProvider);
 
 export const DashProvider = ({ children }: IDashProviderProps) => {
   const [posts, setPosts] = useState<IDashPosts[]>([] as IDashPosts[]);
-  const [newPost, setNewPost] = useState<IPosts>({} as IPosts);
   const [film, setFilm] = useState<IFilm>({} as IFilm);
   const token = localStorage.getItem('@TOKEN');
 
@@ -42,8 +41,8 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
   };
 
   const addPost = async (data: IPosts) => {
-    const id = localStorage.getItem('@USERID')
-    
+    const id = localStorage.getItem('@USERID');
+
     const newData = {
       title: data.title,
       description: data.description,
@@ -52,19 +51,19 @@ export const DashProvider = ({ children }: IDashProviderProps) => {
     };
 
     try {
-     await api.post<IPosts>('/posts', newData,{
-        headers:{
+      await api.post<IPosts>('/posts', newData, {
+        headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      getPosts()
+      getPosts();
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <DashContext.Provider value={{ posts, film, addPost}}>
+    <DashContext.Provider value={{ posts, film, addPost }}>
       {children}
     </DashContext.Provider>
   );

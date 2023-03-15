@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Card } from '../../component/Cards';
 import Header from '../../component/Header';
 import { InformationProfile } from '../../component/InformationsProfile';
@@ -18,14 +18,17 @@ export const ProfilePage = () => {
               <div className="title">
                 <h2>Atividades da conta</h2>
               </div>
-              {activities.map((post, index) => {
+              {activities.map((post) => {
                 return (
                   <Card
                     key={post.id}
                     id={post.id}
                     title={post.title}
                     descrition={post.description}
-                    img={userForId[index]?.avatar}
+                    img={
+                      userForId.find((element) => element.id === post.userId)
+                        ?.avatar
+                    }
                   />
                 );
               })}

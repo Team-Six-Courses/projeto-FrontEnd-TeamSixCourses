@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import { StyledButton } from './style';
 
 interface IButtonDefaultProps extends HTMLAttributes<HTMLElement> {

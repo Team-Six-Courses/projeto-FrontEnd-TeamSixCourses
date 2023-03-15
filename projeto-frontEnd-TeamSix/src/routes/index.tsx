@@ -1,6 +1,4 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { App } from '../App';
 import { DashboardPage } from '../pages/DashboardPage/DashboardPage';
 import { DiscussionPage } from '../pages/DiscussionPage/DiscussionPage';
 import { LoginPage } from '../pages/Login/LoginPage';
@@ -23,7 +21,9 @@ export const RoutesPages = () => {
           element={
             <DiscussionProvider>
               <DashProvider>
-                <DashboardPage />
+                <ProfileProvider>
+                  <DashboardPage />
+                </ProfileProvider>
               </DashProvider>
             </DiscussionProvider>
           }

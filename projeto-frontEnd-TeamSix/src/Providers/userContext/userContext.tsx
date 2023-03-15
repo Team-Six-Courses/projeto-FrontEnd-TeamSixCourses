@@ -1,6 +1,5 @@
 import React, { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { toast } from 'react-toastify';
 import { api } from '../../API';
 
@@ -74,7 +73,14 @@ export const UserProvider = ({ children }: IUserDefaultProps) => {
 
   return (
     <UserContext.Provider
-      value={{ registerUser, loading, setLoading, loginUser, setAvatarSelect, avatarSelect }}
+      value={{
+        registerUser,
+        loading,
+        setLoading,
+        loginUser,
+        setAvatarSelect,
+        avatarSelect,
+      }}
     >
       {children}
     </UserContext.Provider>

@@ -1,5 +1,3 @@
-import React from 'react';
-import { HTMLAttributes } from 'react';
 import { StyledImgC } from './styled';
 
 interface IImgProprs {
@@ -9,7 +7,7 @@ interface IImgProprs {
 export const Img = ({ src }: IImgProprs) => {
   return (
     <StyledImgC>
-      <img src={src} alt="" />
+      <img src={src} alt="Imagem de perfil" />
     </StyledImgC>
   );
 };
