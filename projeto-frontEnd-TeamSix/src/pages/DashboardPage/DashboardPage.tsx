@@ -11,6 +11,7 @@ import { api } from '../../API';
 import { Img } from '../../component/ImgProfile';
 import { BsFillPlayFill } from 'react-icons/bs';
 import { ModalTrailer } from '../../component/ModalTrailer';
+import { ProfileContext } from '../../Providers/ProfileContext/ProfileContext';
 
 interface IDashForm {
   title: string;
@@ -21,10 +22,12 @@ interface IDashForm {
 
 export const DashboardPage = () => {
   const { film, posts, addPost } = useContext(DashContext);
+  const { userForId } = useContext(ProfileContext);
+
   const [user, setUser] = useState<IUser>({} as IUser);
-  const [userForId, setUserForId] = useState<IUser[]>([] as IUser[]);
-  const token = localStorage.getItem('@TOKEN');
   const [modalTrailer, setModalTrailer] = useState(false);
+
+  const token = localStorage.getItem('@TOKEN');
 
   const {
     register,
@@ -44,32 +47,10 @@ export const DashboardPage = () => {
     reset();
   };
 
-  const getUserForId = async (id: number, newPost: IUser[]) => {
-    try {
-      const response = await api.get<IUser>(`/users/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      newPost.push(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const addUserForId = () => {
-    let newPost: IUser[] = [];
-    posts.forEach((post) => {
-      getUserForId(post.userId, newPost);
-    });
-    setUserForId(newPost);
-    return newPost;
-  };
-
   const getUser = async () => {
     const id = Number(localStorage.getItem('@USERID'));
     try {
-      const response = await api.get<IUser>(`users/`, {
+      const response = await api.get<IUser>(`/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -83,10 +64,6 @@ export const DashboardPage = () => {
   useEffect(() => {
     getUser();
   }, []);
-
-  useEffect(() => {
-    addUserForId();
-  }, [user]);
 
   return (
     <>
@@ -160,8 +137,7 @@ export const DashboardPage = () => {
               </FormStyled>
 
               <ListStyled>
-                {posts.map((post, index) => {
-                  // console.log(userForId[0]?.avatar)
+                {posts.map((post) => {
                   return (
                     <Card
                       id={post.id}
@@ -169,9 +145,8 @@ export const DashboardPage = () => {
                       title={post.title}
                       descrition={post.description}
                       img={
-                        userForId.find((element) => {
-                          element.id === post.userId;
-                        })?.avatar
+                        userForId.find((element) => element.id === post.userId)
+                          ?.avatar
                       }
                     />
                   );

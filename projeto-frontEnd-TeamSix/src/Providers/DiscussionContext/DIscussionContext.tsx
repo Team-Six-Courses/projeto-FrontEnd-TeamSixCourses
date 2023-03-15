@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { api } from '../../API';
-import { IPosts } from '../../types/type';
+import { IPosts, IUser } from '../../types/type';
 import { IDiscussionProvider, IDiscussionProviderProps } from './type';
 
 export const DiscussionContext = createContext<IDiscussionProvider>(
@@ -9,11 +9,10 @@ export const DiscussionContext = createContext<IDiscussionProvider>(
 
 export const DiscussionProvider = ({ children }: IDiscussionProviderProps) => {
   const [post, setPost] = useState<IPosts>({} as IPosts);
-  const [imgPost, setImgPost] = useState<string | undefined>('' as string);
 
   const token = localStorage.getItem('@TOKEN');
 
-  const getPost = async (id: number, img?: string | undefined) => {
+  const getPost = async (id: number) => {
     try {
       const response = await api.get<IPosts>(
         `/posts/${id}?_embed=comments&_embed=likePost`,
@@ -23,8 +22,6 @@ export const DiscussionProvider = ({ children }: IDiscussionProviderProps) => {
           },
         }
       );
-      console.log(response);
-      setImgPost(img);
       setPost(response.data);
     } catch (error) {
       console.error(error);
@@ -32,7 +29,7 @@ export const DiscussionProvider = ({ children }: IDiscussionProviderProps) => {
   };
 
   return (
-    <DiscussionContext.Provider value={{ post, setPost, getPost, imgPost }}>
+    <DiscussionContext.Provider value={{ post, setPost, getPost }}>
       {children}
     </DiscussionContext.Provider>
   );

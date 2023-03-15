@@ -89,27 +89,21 @@ export const ProfileProvider = ({ children }: IProfileProps) => {
     getPost();
   }, []);
 
-  const getUserForId = async (id: number) => {
+  const getUserForId = async () => {
     try {
-      const response = await api.get<IUser>(`/users/${id}`, {
+      const response = await api.get<IUser[]>(`/users`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUserForId([...userForId, response.data]);
+      setUserForId(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const addUserForId = () => {
-    return activities.map((post) => {
-      getUserForId(post.userId);
-    });
-  };
-
   useEffect(() => {
-    addUserForId();
+    getUserForId();
   }, []);
 
   return (

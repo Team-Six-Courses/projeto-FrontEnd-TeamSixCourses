@@ -2,9 +2,10 @@ import { IComments } from '../../types/type';
 import likeSVG from '../../assets/like.svg';
 import Nolike from '../../assets/no-like.svg';
 import { useState } from 'react';
+import { Img } from '../ImgProfile';
 
 interface ICommentsPostsProps {
-  userImg: string;
+  userImg: string | undefined;
   comment: IComments;
 }
 
@@ -22,9 +23,8 @@ export const CommentsPosts = ({ userImg, comment }: ICommentsPostsProps) => {
   return (
     <li className="card">
       <div className="box_user">
-        <figure>
-          <img src={userImg} alt="User Avatar" />
-        </figure>
+        <Img src={userImg} />
+
         <div>
           <p>User name</p>
           <span>user@mail.com</span>

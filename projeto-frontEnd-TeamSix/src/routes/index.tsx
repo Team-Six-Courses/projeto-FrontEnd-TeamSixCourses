@@ -21,7 +21,9 @@ export const RoutesPages = () => {
           element={
             <DiscussionProvider>
               <DashProvider>
-                <DashboardPage />
+                <ProfileProvider>
+                  <DashboardPage />
+                </ProfileProvider>
               </DashProvider>
             </DiscussionProvider>
           }
