@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Outlet, useNavigate, Navigate } from 'react-router-dom';
 
 export const ProtectRoute = () => {
@@ -12,5 +12,5 @@ export const ProtectRoute = () => {
     }
   }, []);
 
-  return token ? <Outlet /> : <Navigate to='/'/>;
+  return token ? <Outlet /> : <Navigate to="/" />;
 };

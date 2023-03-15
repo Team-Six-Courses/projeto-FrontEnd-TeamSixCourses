@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import bgDash from '../../assets/BGdash.svg';
 import bgDash2 from '../../assets/BGdash2.svg';
 import user from '../../assets/userImg.svg';
-
 import cover from '../../assets/Cover.svg';
 
 export const DashStyle = styled.div`

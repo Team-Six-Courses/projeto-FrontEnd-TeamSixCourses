@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../component/Header';
 import {
@@ -11,7 +10,7 @@ import {
 export const NotFoundPage = () => {
   return (
     <>
-      <Header background='rgba(65, 3, 3, 1)'/>
+      <Header background="rgba(65, 3, 3, 1)" />
       <StyledBackgroundImg>
         <StyledMain>
           <StyledTitle>404 - Not Found</StyledTitle>

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IHeaderProps, StyledHeader } from './style';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import imgPerfil from '../../assets/userProfileimg.svg';
 import { ModalAvatar } from '../ModalAvatar';
 import { api } from '../../API';
 import { IUser } from '../../types/type';
@@ -26,7 +25,7 @@ const Header = ({ background }: IHeaderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      
+
       setUser(response.data);
     } catch (error) {
       console.error(error);

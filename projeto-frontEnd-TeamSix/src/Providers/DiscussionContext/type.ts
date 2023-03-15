@@ -1,4 +1,4 @@
-import { IComments, ILikePost, IPosts, IUser } from '../../types/type';
+import { IPosts } from '../../types/type';
 
 export interface IDiscussionProviderProps {
   children: React.ReactNode;
