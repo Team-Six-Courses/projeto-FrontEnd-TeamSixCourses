@@ -9,6 +9,7 @@ import { ICard } from './type';
 export const Card = ({ title, descrition, img, id }: ICard) => {
   const { getPost } = useContext(DiscussionContext);
 
+  const navigate = useNavigate();
   return (
     <StyledLi key={id}>
       <StyledHeaderPost>
@@ -19,7 +20,8 @@ export const Card = ({ title, descrition, img, id }: ICard) => {
       <button
         type="button"
         onClick={() => {
-          getPost(id, img);
+          // getPost(id, img);
+          navigate(`/home/discussion/${id}`);
         }}
       >
         Continuar lendo...

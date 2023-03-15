@@ -40,7 +40,7 @@ export const RoutesPages = () => {
         />
       </Route>
       <Route
-        path="home/discussion/:id:"
+        path="home/discussion/:id"
         element={
           <DiscussionProvider>
             <DiscussionPage />

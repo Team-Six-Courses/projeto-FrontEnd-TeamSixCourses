@@ -1,7 +1,8 @@
 import { ClassNames } from '@emotion/react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../API';
+import { UserContext } from '../../Providers/userContext/userContext';
 import { IUser } from '../../types/type';
 import { Button } from '../Button';
 import { Img } from '../ImgProfile';
@@ -18,15 +19,15 @@ interface IModalAvatarProps {
 }
 
 export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
+  const { avatarSelect, setAvatarSelect } = useContext(UserContext)
   const [avatars, setAvatars] = useState<IAvatars[]>([] as IAvatars[]);
-  const [avatarSelect, setAvatarSelect] = useState('');
+ 
 
   const navigate = useNavigate();
 
    const getAvatars = async () => {
     try {
       const response = await api.get<IAvatars[]>('/avatars');
-
       setAvatars(response.data);
     } catch (error) {
       console.error(error);
@@ -36,7 +37,8 @@ export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
   const editAvatar = async (avatarString: string) => {
     const token = localStorage.getItem('@TOKEN');
     const id = Number(localStorage.getItem('@USERID'));
-
+    
+    console.log(avatarString)
     const request = {
       avatar: avatarString,
     };
@@ -53,27 +55,27 @@ export const ModalAvatar = ({ setModalAvatar }: IModalAvatarProps) => {
     }
   };
 
-  useEffect(() => {
-    // const editAvatar = async (avatarString: string) => {
-    //   const token = localStorage.getItem('@TOKEN');
-    //   const id = Number(localStorage.getItem('@USERID'));
+  // useEffect(() => {
+  //   // const editAvatar = async (avatarString: string) => {
+  //   //   const token = localStorage.getItem('@TOKEN');
+  //   //   const id = Number(localStorage.getItem('@USERID'));
 
-    //   const request = {
-    //     avatar: avatarString,
-    //   };
+  //   //   const request = {
+  //   //     avatar: avatarString,
+  //   //   };
 
-    //   try {
-    //     await api.patch<IUser>(`/users/${id}`, request, {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     });
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // };
-    editAvatar(avatarSelect);
-  }, []);
+  //   //   try {
+  //   //     await api.patch<IUser>(`/users/${id}`, request, {
+  //   //       headers: {
+  //   //         Authorization: `Bearer ${token}`,
+  //   //       },
+  //   //     });
+  //   //   } catch (error) {
+  //   //     console.error(error);
+  //   //   }
+  //   // };
+  //   editAvatar(avatarSelect);
+  // }, []);
 
   useEffect(() => {
     getAvatars();

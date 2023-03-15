@@ -12,9 +12,7 @@ export const DiscussionProvider = ({ children }: IDiscussionProviderProps) => {
   const [post, setPost] = useState<IPosts>({} as IPosts);
   const [imgPost, setImgPost] = useState<string | undefined>('' as string);
   const [postId, setPostId] = useState<number>(0);
-
   const navigate = useNavigate();
-
   const token = localStorage.getItem('@TOKEN');
 
   const getPost = async (id: number, img?: string | undefined) => {
@@ -28,18 +26,18 @@ export const DiscussionProvider = ({ children }: IDiscussionProviderProps) => {
           },
         }
       );
+      console.log(response);
       setImgPost(img);
       setPost(response.data);
-
-      navigate('/home/discussion/:id:');
+      // navigate(`/home/discussion/${id}`);
     } catch (error) {
       console.error(error);
     }
   };
 
-  /*   useEffect(() => {
-    getPost(postId);
-  }, []); */
+  // useEffect(() => {
+  //   getPost(postId);
+  // }, []);
 
   return (
     <DiscussionContext.Provider value={{ post, setPost, getPost, imgPost }}>
